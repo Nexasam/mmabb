@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserMaterialController;
+use App\Http\Middleware\EnsureUserIsAdmin;
 use Illuminate\Support\Facades\Route;
 
 // ─── Public pages ────────────────────────────────────────────────────────────
@@ -37,7 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // ─── Admin area ───────────────────────────────────────────────────────────────
-Route::middleware(['auth', 'verified', \App\Http\Middleware\EnsureUserIsAdmin::class])
+Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {

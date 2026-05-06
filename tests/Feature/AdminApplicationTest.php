@@ -1,12 +1,9 @@
 <?php
 
 use App\Models\Application;
-use App\Models\Course;
 use App\Models\User;
 
 use function Pest\Laravel\actingAs;
-use function Pest\Laravel\get;
-use function Pest\Laravel\patch;
 
 describe('admin applications', function () {
     it('allows admins to view all applications', function () {
