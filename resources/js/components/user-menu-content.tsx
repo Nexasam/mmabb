@@ -35,12 +35,12 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                     <Link
-                        className="block w-full cursor-pointer"
+                        className="flex w-full cursor-pointer items-center gap-2 font-medium text-[#1c1b4a]"
                         href={edit()}
                         prefetch
                         onClick={cleanup}
                     >
-                        <Settings className="mr-2" />
+                        <Settings className="size-4 text-brand-500" />
                         Settings
                     </Link>
                 </DropdownMenuItem>
@@ -48,13 +48,13 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
                 <Link
-                    className="block w-full cursor-pointer"
+                    className="flex w-full cursor-pointer items-center gap-2 font-medium text-red-600 hover:text-red-700"
                     href={logout()}
                     as="button"
                     onClick={handleLogout}
                     data-test="logout-button"
                 >
-                    <LogOut className="mr-2" />
+                    <LogOut className="size-4" />
                     Log out
                 </Link>
             </DropdownMenuItem>

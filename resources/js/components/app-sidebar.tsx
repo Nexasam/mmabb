@@ -1,6 +1,13 @@
-import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
-import AppLogo from '@/components/app-logo';
+import { Link, usePage } from '@inertiajs/react';
+import {
+    BookOpen,
+    ClipboardList,
+    Globe,
+    LayoutGrid,
+    Mail,
+    Settings2,
+    Users2,
+} from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -12,52 +19,85 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
-import type { NavItem } from '@/types';
-
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-];
+import type { Auth, NavItem } from '@/types';
 
 const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
-    },
+    { title: 'Browse Courses', href: '/courses', icon: Globe },
+    { title: 'Contact Us',     href: '/contact', icon: Mail  },
 ];
 
 export function AppSidebar() {
+    const { auth } = usePage<{ auth: Auth }>().props;
+
+    const mainNavItems: NavItem[] = [
+        { title: 'Dashboard',       href: dashboard(),        icon: LayoutGrid   },
+        { title: 'My Applications', href: '/my-applications', icon: ClipboardList },
+        ...(auth.hasApprovedApplication
+            ? [{ title: 'My Materials', href: '/my-materials', icon: BookOpen }]
+            : []),
+    ];
+
+    const adminNavItems: NavItem[] = auth.isAdmin
+        ? [
+              { title: 'Applications', href: '/admin/applications', icon: Users2    },
+              { title: 'Materials',    href: '/admin/materials',    icon: Settings2 },
+          ]
+        : [];
+
     return (
-        <Sidebar collapsible="icon" variant="inset">
-            <SidebarHeader>
+        <Sidebar collapsible="icon" variant="sidebar" className="border-r border-slate-200">
+
+            {/* ── Logo header ── */}
+            <SidebarHeader className="h-16 border-b border-slate-200 bg-white p-4">
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()} prefetch>
-                                <AppLogo />
+                        <SidebarMenuButton
+                            size="lg"
+                            asChild
+                            className="group/logo h-auto p-0 hover:bg-transparent"
+                        >
+                            <Link href={dashboard()} prefetch className="flex items-center gap-3">
+                                {/* Logo */}
+                                <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-brand-600">
+                                    <img
+                                        src="/images/logo.webp"
+                                        alt="MMAB"
+                                        className="h-6 w-auto object-contain brightness-0 invert"
+                                    />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-sm font-semibold text-slate-900">
+                                        MMAB Consulting
+                                    </span>
+                                    <span className="text-xs text-slate-500">
+                                        Healthcare Training
+                                    </span>
+                                </div>
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
 
-            <SidebarContent>
-                <NavMain items={mainNavItems} />
+            {/* ── Navigation ── */}
+            <SidebarContent className="bg-white p-3">
+                <NavMain items={mainNavItems} label="Main" />
+
+                {auth.isAdmin && adminNavItems.length > 0 && (
+                    <>
+                        <div className="my-4 h-px bg-slate-200" />
+                        <NavMain items={adminNavItems} label="Administration" />
+                    </>
+                )}
             </SidebarContent>
 
-            <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
+            {/* ── Footer ── */}
+            <SidebarFooter className="border-t border-slate-200 bg-white p-3">
+                <NavFooter items={footerNavItems} className="mt-0" />
+                <div className="my-3 h-px bg-slate-200" />
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
