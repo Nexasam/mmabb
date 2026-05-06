@@ -76,6 +76,8 @@ function QuickCard({
                     href={href}
                     className={`inline-flex items-center gap-1.5 text-sm font-bold transition-all ${s.link}`}
                 >
+               
+                    
                     {cta}
                     <ArrowRight className="size-3.5 transition-transform duration-200 group-hover:translate-x-1.5" />
                 </Link>
