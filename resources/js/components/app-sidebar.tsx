@@ -2,6 +2,7 @@ import { Link, usePage } from '@inertiajs/react';
 import {
     BookOpen,
     ClipboardList,
+    ClipboardCheck,
     Globe,
     LayoutGrid,
     Mail,
@@ -36,7 +37,10 @@ export function AppSidebar() {
         { title: 'Dashboard',       href: dashboard(),        icon: LayoutGrid   },
         { title: 'My Applications', href: '/my-applications', icon: ClipboardList },
         ...(auth.hasApprovedApplication
-            ? [{ title: 'My Materials', href: '/my-materials', icon: BookOpen }]
+            ? [
+                  { title: 'My Materials',   href: '/my-materials',   icon: BookOpen      },
+                  { title: 'My Assessments', href: '/my-assessments', icon: ClipboardCheck },
+              ]
             : []),
     ];
 
@@ -44,6 +48,7 @@ export function AppSidebar() {
         ? [
               { title: 'Applications', href: '/admin/applications', icon: Users2    },
               { title: 'Materials',    href: '/admin/materials',    icon: Settings2 },
+              { title: 'Assessments',  href: '/admin/assessments',  icon: ClipboardCheck },
           ]
         : [];
 

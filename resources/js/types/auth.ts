@@ -74,3 +74,31 @@ export type Material = {
     sort_order: number;
     created_at: string;
 };
+
+export type AssessmentQuestion = {
+    question: string;
+    marks: number;
+};
+
+export type Assessment = {
+    id: number;
+    course_id: number;
+    title: string;
+    instructions: string | null;
+    questions: AssessmentQuestion[];
+    time_limit_minutes: number;
+    is_active: boolean;
+    created_at: string;
+};
+
+export type AssessmentSubmission = {
+    id: number;
+    assessment_id: number;
+    user_id: number;
+    answers: { question_index: number; answer: string }[];
+    submitted_at: string | null;
+    started_at: string | null;
+    score: number | null;
+    marker_notes: string | null;
+    marked_at: string | null;
+};

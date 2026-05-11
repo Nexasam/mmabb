@@ -56,4 +56,12 @@ class Course extends Model
     {
         return $this->hasMany(Material::class)->orderBy('sort_order');
     }
+
+    /**
+     * Get all assessments for this course.
+     */
+    public function assessments(): HasMany
+    {
+        return $this->hasMany(Assessment::class);
+    }
 }
