@@ -28,3 +28,4 @@ yarn-error.log
 /.zed
 *.mp4
 composer.phar
+/public/videos

@@ -165,9 +165,9 @@ export function HeroSection() {
                                 aspectRatio: '1.15 / 1',
                             }}
                         >
-                            {/*
+                        {/*
                              * Autoplay looping video — clipped to the oval shape.
-                             * Replace /videos/hero.mp4 with your own file if needed.
+                             * Hosted locally in public/videos/hero.mp4
                              */}
                             <video
                                 src="/videos/hero.mp4"
