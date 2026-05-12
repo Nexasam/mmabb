@@ -55,6 +55,17 @@ class AssessmentService
     }
 
     /**
+     * Check whether a user has approved access to an assessment's course.
+     */
+    public function userHasAccess(Assessment $assessment, User $user): bool
+    {
+        return $user->applications()
+            ->where('course_id', $assessment->course_id)
+            ->where('status', ApplicationStatus::Approved->value)
+            ->exists();
+    }
+
+    /**
      * Get or create a submission for a user, recording started_at on first access.
      */
     public function getOrCreateSubmission(Assessment $assessment, User $user): AssessmentSubmission

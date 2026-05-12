@@ -2,6 +2,7 @@ import { Head, Link, usePage } from '@inertiajs/react';
 import {
     ArrowRight,
     BookOpen,
+    ClipboardCheck,
     ClipboardList,
     FileText,
     Settings2,
@@ -170,7 +171,7 @@ export default function Dashboard() {
                                 href="/my-applications"
                                 cta="View Applications"
                             />
-                            {auth.hasApprovedApplication ? (
+                        {auth.hasApprovedApplication ? (
                                 <QuickCard
                                     icon={FileText}
                                     title="Course Materials"
@@ -184,6 +185,24 @@ export default function Dashboard() {
                                     icon={FileText}
                                     title="Course Materials"
                                     description="Materials become available once your application is approved by our team."
+                                    href="/my-applications"
+                                    cta="Check Application Status"
+                                />
+                            )}
+                            {auth.hasApprovedApplication ? (
+                                <QuickCard
+                                    icon={ClipboardCheck}
+                                    title="My Assessments"
+                                    description="Take your course assessments and track your results. Timed and auto-marked where possible."
+                                    href="/my-assessments"
+                                    cta="View Assessments"
+                                    variant="success"
+                                />
+                            ) : (
+                                <QuickCard
+                                    icon={ClipboardCheck}
+                                    title="My Assessments"
+                                    description="Assessments become available once your application is approved by our team."
                                     href="/my-applications"
                                     cta="Check Application Status"
                                 />

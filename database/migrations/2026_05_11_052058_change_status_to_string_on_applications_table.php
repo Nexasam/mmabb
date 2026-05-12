@@ -15,8 +15,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('applications', function (Blueprint $table) {
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending')->change();
-        });
+        // No-op: column was originally created as string
     }
 };

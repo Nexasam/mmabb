@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('professional_background');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->string('status')->default('pending');
             $table->text('admin_notes')->nullable();
             $table->timestamps();
 

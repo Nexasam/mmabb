@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\ApplicationStatus;
 use App\Models\Assessment;
 use App\Models\AssessmentSubmission;
 use App\Services\AssessmentService;
@@ -34,12 +33,10 @@ class AssessmentController extends Controller
     {
         $user = auth()->user();
 
-        $hasAccess = $user->applications()
-            ->where('course_id', $assessment->course_id)
-            ->where('status', ApplicationStatus::Approved->value)
-            ->exists();
-
-        abort_unless($hasAccess && $assessment->is_active, 403);
+        abort_unless(
+            $this->assessmentService->userHasAccess($assessment, $user) && $assessment->is_active,
+            403,
+        );
 
         $submission = $this->assessmentService->getOrCreateSubmission($assessment, $user);
 
@@ -75,12 +72,10 @@ class AssessmentController extends Controller
     {
         $user = auth()->user();
 
-        $hasAccess = $user->applications()
-            ->where('course_id', $assessment->course_id)
-            ->where('status', ApplicationStatus::Approved->value)
-            ->exists();
-
-        abort_unless($hasAccess && $assessment->is_active, 403);
+        abort_unless(
+            $this->assessmentService->userHasAccess($assessment, $user) && $assessment->is_active,
+            403,
+        );
 
         $submission = AssessmentSubmission::where('assessment_id', $assessment->id)
             ->where('user_id', $user->id)
