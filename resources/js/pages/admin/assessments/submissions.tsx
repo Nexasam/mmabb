@@ -1,11 +1,11 @@
 import { Head, router } from '@inertiajs/react';
-import { ArrowLeft, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, AlertCircle, Star } from 'lucide-react';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 
-type Question = { question: string; marks: number };
+type Question = { question: string; marks: number; optional: boolean };
 type Assessment = {
     id: number;
     title: string;
@@ -13,17 +13,32 @@ type Assessment = {
     time_limit_minutes: number;
     course: { id: number; title: string };
 };
+type QuestionMark = { question_index: number; awarded: number };
 type Submission = {
     id: number;
     user: { id: number; name: string; email: string };
     answers: { question_index: number; answer: string }[];
+    question_marks: QuestionMark[] | null;
     submitted_at: string | null;
     score: number | null;
     marker_notes: string | null;
     marked_at: string | null;
 };
 
-type MarkDialog = { open: boolean; submission: Submission | null; score: string; notes: string };
+type MarkState = {
+    open: boolean;
+    submission: Submission | null;
+    questionMarks: Record<number, string>; // question_index -> awarded string
+    notes: string;
+};
+
+function getAnswer(submission: Submission, index: number): string {
+    return submission.answers.find((a) => a.question_index === index)?.answer ?? '';
+}
+
+function getAwarded(submission: Submission, index: number): number | null {
+    return submission.question_marks?.find((m) => m.question_index === index)?.awarded ?? null;
+}
 
 export default function AdminAssessmentSubmissions({
     assessment,
@@ -32,25 +47,53 @@ export default function AdminAssessmentSubmissions({
     assessment: Assessment;
     submissions: Submission[];
 }) {
-    const [markDialog, setMarkDialog] = useState<MarkDialog>({
-        open: false, submission: null, score: '', notes: '',
+    const [markState, setMarkState] = useState<MarkState>({
+        open: false, submission: null, questionMarks: {}, notes: '',
     });
     const [processing, setProcessing] = useState(false);
     const [viewSubmission, setViewSubmission] = useState<Submission | null>(null);
 
     function openMark(sub: Submission) {
-        setMarkDialog({ open: true, submission: sub, score: String(sub.score ?? ''), notes: sub.marker_notes ?? '' });
+        const existing: Record<number, string> = {};
+        assessment.questions.forEach((_, i) => {
+            const awarded = getAwarded(sub, i);
+            existing[i] = awarded !== null ? String(awarded) : '';
+        });
+        setMarkState({ open: true, submission: sub, questionMarks: existing, notes: sub.marker_notes ?? '' });
+    }
+
+    function setQuestionMark(index: number, value: string) {
+        setMarkState((p) => ({ ...p, questionMarks: { ...p.questionMarks, [index]: value } }));
+    }
+
+    // Calculate live score preview
+    function calcScore(sub: Submission, marks: Record<number, string>): { awarded: number; possible: number; pct: number } {
+        let awarded = 0;
+        let possible = 0;
+        assessment.questions.forEach((q, i) => {
+            const hasAnswer = getAnswer(sub, i).trim() !== '';
+            const isOptional = q.optional ?? false;
+            if (!isOptional || hasAnswer) {
+                possible += q.marks;
+                awarded += Math.min(parseFloat(marks[i] || '0') || 0, q.marks);
+            }
+        });
+        return { awarded, possible, pct: possible > 0 ? Math.round((awarded / possible) * 100) : 0 };
     }
 
     function handleMark() {
-        if (!markDialog.submission) return;
+        if (!markState.submission) return;
         setProcessing(true);
+        const questionMarks = assessment.questions.map((_, i) => ({
+            question_index: i,
+            awarded: parseFloat(markState.questionMarks[i] || '0') || 0,
+        }));
         router.patch(
-            `/admin/submissions/${markDialog.submission.id}/mark`,
-            { score: parseInt(markDialog.score), marker_notes: markDialog.notes },
+            `/admin/submissions/${markState.submission.id}/mark`,
+            { question_marks: questionMarks, marker_notes: markState.notes },
             {
                 preserveScroll: true,
-                onFinish: () => { setProcessing(false); setMarkDialog((p) => ({ ...p, open: false })); },
+                onFinish: () => { setProcessing(false); setMarkState((p) => ({ ...p, open: false })); },
             },
         );
     }
@@ -58,6 +101,10 @@ export default function AdminAssessmentSubmissions({
     const totalMarks = assessment.questions.reduce((s, q) => s + q.marks, 0);
     const submitted = submissions.filter((s) => s.submitted_at);
     const marked = submissions.filter((s) => s.marked_at);
+
+    const liveScore = markState.submission
+        ? calcScore(markState.submission, markState.questionMarks)
+        : null;
 
     return (
         <>
@@ -77,8 +124,13 @@ export default function AdminAssessmentSubmissions({
                         <h1 className="text-2xl font-extrabold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
                             {assessment.title}
                         </h1>
-                        <div className="mt-1 flex items-center gap-4 text-xs text-gray-500">
-                            <span>{assessment.questions.length} questions · {totalMarks} total marks · {assessment.time_limit_minutes} min</span>
+                        <div className="mt-1 text-xs text-gray-500">
+                            {assessment.questions.length} questions · {totalMarks} total marks · {assessment.time_limit_minutes} min
+                            {assessment.questions.some((q) => q.optional) && (
+                                <span className="ml-2 rounded-full bg-amber-50 px-2 py-0.5 text-amber-600">
+                                    {assessment.questions.filter((q) => q.optional).length} optional
+                                </span>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -179,76 +231,146 @@ export default function AdminAssessmentSubmissions({
                 </div>
             </div>
 
-            {/* Mark dialog */}
-            <Dialog open={markDialog.open} onOpenChange={(o) => !o && setMarkDialog((p) => ({ ...p, open: false }))}>
-                <DialogContent className="overflow-hidden rounded-2xl p-0 shadow-2xl sm:max-w-md">
+            {/* ── Per-question mark dialog ── */}
+            <Dialog open={markState.open} onOpenChange={(o) => !o && setMarkState((p) => ({ ...p, open: false }))}>
+                <DialogContent className="max-h-[90vh] overflow-y-auto rounded-2xl p-0 shadow-2xl sm:max-w-2xl">
                     <div className="bg-gradient-to-br from-brand-700 to-brand-500 px-6 py-5 text-white">
                         <DialogHeader>
                             <DialogTitle className="text-lg font-extrabold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
                                 Mark Submission
                             </DialogTitle>
                             <p className="mt-0.5 text-sm text-brand-200">
-                                Award a score out of 100% and add optional feedback.
+                                Award marks per question. Score is calculated automatically.
                             </p>
                         </DialogHeader>
                     </div>
 
-                    {markDialog.submission && (
+                    {markState.submission && (
                         <div className="space-y-5 px-6 py-5">
-                            <div className="rounded-xl border border-[#dddcf0] bg-[#f4f3fb] p-4">
-                                <div className="font-bold text-[#1c1b4a]">{markDialog.submission.user.name}</div>
-                                <div className="text-sm text-[#5a5980]">{markDialog.submission.user.email}</div>
-                            </div>
-
-                            <div className="grid gap-1.5">
-                                <Label className="text-sm font-semibold text-gray-700">
-                                    Score <span className="font-normal text-gray-400">(0 – 100%)</span>
-                                </Label>
-                                <div className="flex items-center gap-3">
-                                    <input
-                                        type="range"
-                                        min="0"
-                                        max="100"
-                                        value={markDialog.score || 0}
-                                        onChange={(e) => setMarkDialog((p) => ({ ...p, score: e.target.value }))}
-                                        className="flex-1 accent-brand-600"
-                                    />
-                                    <div className="flex h-10 w-16 items-center justify-center rounded-xl border border-gray-200 bg-gray-50 text-sm font-bold text-brand-700">
-                                        {markDialog.score || 0}%
-                                    </div>
+                            {/* Student info */}
+                            <div className="flex items-center justify-between rounded-xl border border-[#dddcf0] bg-[#f4f3fb] px-4 py-3">
+                                <div>
+                                    <div className="font-bold text-[#1c1b4a]">{markState.submission.user.name}</div>
+                                    <div className="text-sm text-[#5a5980]">{markState.submission.user.email}</div>
                                 </div>
+                                {liveScore && (
+                                    <div className="text-right">
+                                        <div className="text-2xl font-extrabold text-brand-700">{liveScore.pct}%</div>
+                                        <div className="text-xs text-gray-400">{liveScore.awarded}/{liveScore.possible} marks</div>
+                                    </div>
+                                )}
                             </div>
 
+                            {/* Per-question marking */}
+                            <div className="space-y-4">
+                                {assessment.questions.map((q, i) => {
+                                    const answer = getAnswer(markState.submission!, i);
+                                    const hasAnswer = answer.trim() !== '';
+                                    const isOptional = q.optional ?? false;
+                                    const awarded = parseFloat(markState.questionMarks[i] || '0') || 0;
+                                    const pct = q.marks > 0 ? Math.round((awarded / q.marks) * 100) : 0;
+
+                                    return (
+                                        <div key={i} className={`overflow-hidden rounded-xl border ${isOptional ? 'border-amber-100' : 'border-gray-100'}`}>
+                                            {/* Question header */}
+                                            <div className={`flex items-start justify-between gap-3 px-4 py-3 ${isOptional ? 'bg-amber-50/60' : 'bg-gray-50'}`}>
+                                                <div className="flex-1">
+                                                    <p className="text-sm font-semibold text-gray-900">
+                                                        <span className="mr-1.5 text-brand-600">Q{i + 1}.</span>
+                                                        {q.question}
+                                                    </p>
+                                                    {isOptional && (
+                                                        <span className="mt-1 inline-flex items-center gap-1 text-xs text-amber-600">
+                                                            <Star className="size-3" /> Optional
+                                                            {!hasAnswer && <span className="text-gray-400">(not answered — excluded from score)</span>}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <span className="shrink-0 text-xs font-semibold text-brand-600">{q.marks} marks</span>
+                                            </div>
+
+                                            {/* Student answer */}
+                                            <div className="border-b border-gray-50 px-4 py-3">
+                                                {hasAnswer ? (
+                                                    <p className="whitespace-pre-wrap text-sm text-gray-700">{answer}</p>
+                                                ) : (
+                                                    <p className="text-sm italic text-gray-400">No answer provided</p>
+                                                )}
+                                            </div>
+
+                                            {/* Mark input */}
+                                            <div className="flex items-center gap-3 bg-white px-4 py-3">
+                                                <Label className="shrink-0 text-xs font-semibold text-gray-600">
+                                                    Marks awarded:
+                                                </Label>
+                                                <input
+                                                    type="number"
+                                                    min="0"
+                                                    max={q.marks}
+                                                    step="0.5"
+                                                    value={markState.questionMarks[i] ?? ''}
+                                                    onChange={(e) => setQuestionMark(i, e.target.value)}
+                                                    disabled={isOptional && !hasAnswer}
+                                                    placeholder="0"
+                                                    className="h-8 w-20 rounded-lg border border-gray-200 bg-gray-50 px-2 text-center text-sm font-semibold text-gray-900 disabled:opacity-40"
+                                                />
+                                                <span className="text-xs text-gray-400">/ {q.marks}</span>
+                                                {hasAnswer && (
+                                                    <div className="ml-auto flex items-center gap-1.5">
+                                                        <div className="h-1.5 w-24 overflow-hidden rounded-full bg-gray-100">
+                                                            <div
+                                                                className={`h-full rounded-full transition-all ${pct >= 70 ? 'bg-green-500' : pct >= 40 ? 'bg-amber-400' : 'bg-red-400'}`}
+                                                                style={{ width: `${pct}%` }}
+                                                            />
+                                                        </div>
+                                                        <span className="text-xs font-semibold text-gray-500">{pct}%</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Overall feedback */}
                             <div className="grid gap-1.5">
                                 <Label className="text-sm font-semibold text-gray-700">
-                                    Feedback <span className="font-normal text-gray-400">(optional)</span>
+                                    Overall Feedback <span className="font-normal text-gray-400">(optional)</span>
                                 </Label>
                                 <textarea
                                     rows={3}
-                                    value={markDialog.notes}
-                                    onChange={(e) => setMarkDialog((p) => ({ ...p, notes: e.target.value }))}
-                                    placeholder="Add feedback visible to the student…"
+                                    value={markState.notes}
+                                    onChange={(e) => setMarkState((p) => ({ ...p, notes: e.target.value }))}
+                                    placeholder="Add overall feedback visible to the student…"
                                     className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm outline-none focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-400/20"
                                 />
                             </div>
                         </div>
                     )}
 
-                    <div className="flex items-center justify-end gap-2 border-t border-gray-100 bg-gray-50/60 px-6 py-4">
-                        <button
-                            onClick={() => setMarkDialog((p) => ({ ...p, open: false }))}
-                            className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={handleMark}
-                            disabled={processing || !markDialog.score}
-                            className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-2.5 text-sm font-bold text-white shadow-md disabled:opacity-60"
-                        >
-                            {processing && <Spinner className="size-3.5" />}
-                            Save Mark
-                        </button>
+                    <div className="flex items-center justify-between border-t border-gray-100 bg-gray-50/60 px-6 py-4">
+                        {liveScore && (
+                            <div className="text-sm font-semibold text-gray-700">
+                                Calculated score: <span className="text-brand-700">{liveScore.pct}%</span>
+                                <span className="ml-1 text-xs font-normal text-gray-400">({liveScore.awarded}/{liveScore.possible} marks)</span>
+                            </div>
+                        )}
+                        <div className="flex items-center gap-2 ml-auto">
+                            <button
+                                onClick={() => setMarkState((p) => ({ ...p, open: false }))}
+                                className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleMark}
+                                disabled={processing}
+                                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-2.5 text-sm font-bold text-white shadow-md disabled:opacity-60"
+                            >
+                                {processing && <Spinner className="size-3.5" />}
+                                Save Marks
+                            </button>
+                        </div>
                     </div>
                 </DialogContent>
             </Dialog>
@@ -267,18 +389,32 @@ export default function AdminAssessmentSubmissions({
                         </div>
                         <div className="space-y-4 p-6">
                             {assessment.questions.map((q, i) => {
-                                const ans = viewSubmission.answers.find((a) => a.question_index === i);
+                                const answer = getAnswer(viewSubmission, i);
+                                const awarded = getAwarded(viewSubmission, i);
+                                const isOptional = q.optional ?? false;
                                 return (
-                                    <div key={i} className="overflow-hidden rounded-xl border border-gray-100">
-                                        <div className="flex items-start justify-between gap-3 bg-gray-50 px-4 py-3">
-                                            <p className="text-sm font-semibold text-gray-900">
-                                                <span className="mr-1.5 text-brand-600">Q{i + 1}.</span>{q.question}
-                                            </p>
-                                            <span className="shrink-0 text-xs font-semibold text-brand-600">{q.marks}m</span>
+                                    <div key={i} className={`overflow-hidden rounded-xl border ${isOptional ? 'border-amber-100' : 'border-gray-100'}`}>
+                                        <div className={`flex items-start justify-between gap-3 px-4 py-3 ${isOptional ? 'bg-amber-50/60' : 'bg-gray-50'}`}>
+                                            <div>
+                                                <p className="text-sm font-semibold text-gray-900">
+                                                    <span className="mr-1.5 text-brand-600">Q{i + 1}.</span>{q.question}
+                                                </p>
+                                                {isOptional && (
+                                                    <span className="mt-0.5 inline-flex items-center gap-1 text-xs text-amber-600">
+                                                        <Star className="size-3" /> Optional
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="shrink-0 text-right">
+                                                <span className="text-xs font-semibold text-brand-600">{q.marks}m</span>
+                                                {awarded !== null && (
+                                                    <div className="text-xs font-bold text-green-600">+{awarded}</div>
+                                                )}
+                                            </div>
                                         </div>
                                         <div className="px-4 py-3">
-                                            {ans?.answer ? (
-                                                <p className="whitespace-pre-wrap text-sm text-gray-700">{ans.answer}</p>
+                                            {answer ? (
+                                                <p className="whitespace-pre-wrap text-sm text-gray-700">{answer}</p>
                                             ) : (
                                                 <p className="text-sm italic text-gray-400">No answer provided</p>
                                             )}

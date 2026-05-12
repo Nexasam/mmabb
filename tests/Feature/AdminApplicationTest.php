@@ -35,7 +35,7 @@ describe('admin applications', function () {
             ])
             ->assertRedirect();
 
-        expect($application->fresh()->status)->toBe('approved');
+        expect($application->fresh()->status->value)->toBe('approved');
         expect($application->fresh()->admin_notes)->toBe('Welcome aboard.');
     });
 

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'assessment_id',
     'user_id',
     'answers',
+    'question_marks',
     'submitted_at',
     'started_at',
     'score',
@@ -27,6 +28,7 @@ class AssessmentSubmission extends Model
     {
         return [
             'answers' => 'array',
+            'question_marks' => 'array',
             'submitted_at' => 'datetime',
             'started_at' => 'datetime',
             'marked_at' => 'datetime',

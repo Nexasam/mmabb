@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ApplicationStatus;
 use Database\Factories\ApplicationFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,43 +24,35 @@ class Application extends Model
     /** @use HasFactory<ApplicationFactory> */
     use HasFactory;
 
-    /**
-     * Get the user who submitted this application.
-     */
+    protected function casts(): array
+    {
+        return [
+            'status' => ApplicationStatus::class,
+        ];
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the course this application is for.
-     */
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
     }
 
-    /**
-     * Determine if the application has been approved.
-     */
     public function isApproved(): bool
     {
-        return $this->status === 'approved';
+        return $this->status === ApplicationStatus::Approved;
     }
 
-    /**
-     * Determine if the application is pending.
-     */
     public function isPending(): bool
     {
-        return $this->status === 'pending';
+        return $this->status === ApplicationStatus::Pending;
     }
 
-    /**
-     * Determine if the application has been rejected.
-     */
     public function isRejected(): bool
     {
-        return $this->status === 'rejected';
+        return $this->status === ApplicationStatus::Rejected;
     }
 }

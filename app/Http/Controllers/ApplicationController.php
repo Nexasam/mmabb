@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreApplicationRequest;
-use App\Models\Application;
 use App\Models\Course;
+use App\Services\ApplicationService;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class ApplicationController extends Controller
 {
+    public function __construct(private readonly ApplicationService $applicationService) {}
+
     /**
      * Show the application form for a course.
      */
@@ -28,17 +30,17 @@ class ApplicationController extends Controller
      */
     public function store(StoreApplicationRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        $data['user_id'] = $request->user()?->id;
-
-        Application::create($data);
+        $application = $this->applicationService->create(
+            $request->validated(),
+            $request->user(),
+        );
 
         Inertia::flash('toast', [
             'type' => 'success',
             'message' => 'Your application has been submitted. We will be in touch shortly.',
         ]);
 
-        return to_route('courses.show', Course::find($data['course_id']));
+        return to_route('courses.show', Course::find($application->course_id));
     }
 
     /**
@@ -46,10 +48,7 @@ class ApplicationController extends Controller
      */
     public function index(): Response
     {
-        $applications = Application::with('course:id,title,slug')
-            ->where('user_id', auth()->id())
-            ->latest()
-            ->get();
+        $applications = $this->applicationService->getForUser(auth()->user());
 
         return Inertia::render('applications/index', [
             'applications' => $applications,

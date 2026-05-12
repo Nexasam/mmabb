@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Assessment;
 use App\Models\AssessmentSubmission;
 use App\Models\Course;
+use App\Services\AssessmentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -13,9 +14,8 @@ use Inertia\Response;
 
 class AdminAssessmentController extends Controller
 {
-    /**
-     * List all assessments grouped by course.
-     */
+    public function __construct(private readonly AssessmentService $assessmentService) {}
+
     public function index(): Response
     {
         $courses = Course::where('is_active', true)
@@ -27,9 +27,6 @@ class AdminAssessmentController extends Controller
         ]);
     }
 
-    /**
-     * Store a new assessment.
-     */
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
@@ -40,6 +37,11 @@ class AdminAssessmentController extends Controller
             'questions' => ['required', 'array', 'min:1'],
             'questions.*.question' => ['required', 'string', 'max:1000'],
             'questions.*.marks' => ['required', 'integer', 'min:1', 'max:100'],
+            'questions.*.optional' => ['boolean'],
+            'questions.*.type' => ['required', 'string', 'in:text,mcq'],
+            'questions.*.options' => ['nullable', 'array', 'min:2'],
+            'questions.*.options.*' => ['nullable', 'string', 'max:500'],
+            'questions.*.correct_index' => ['nullable', 'integer', 'min:0'],
         ]);
 
         Assessment::create($data);
@@ -49,9 +51,6 @@ class AdminAssessmentController extends Controller
         return back();
     }
 
-    /**
-     * Update an existing assessment.
-     */
     public function update(Request $request, Assessment $assessment): RedirectResponse
     {
         $data = $request->validate([
@@ -61,6 +60,11 @@ class AdminAssessmentController extends Controller
             'questions' => ['required', 'array', 'min:1'],
             'questions.*.question' => ['required', 'string', 'max:1000'],
             'questions.*.marks' => ['required', 'integer', 'min:1', 'max:100'],
+            'questions.*.optional' => ['boolean'],
+            'questions.*.type' => ['required', 'string', 'in:text,mcq'],
+            'questions.*.options' => ['nullable', 'array', 'min:2'],
+            'questions.*.options.*' => ['nullable', 'string', 'max:500'],
+            'questions.*.correct_index' => ['nullable', 'integer', 'min:0'],
             'is_active' => ['boolean'],
         ]);
 
@@ -71,9 +75,6 @@ class AdminAssessmentController extends Controller
         return back();
     }
 
-    /**
-     * Delete an assessment.
-     */
     public function destroy(Assessment $assessment): RedirectResponse
     {
         $assessment->delete();
@@ -83,9 +84,6 @@ class AdminAssessmentController extends Controller
         return back();
     }
 
-    /**
-     * List all submissions for an assessment.
-     */
     public function submissions(Assessment $assessment): Response
     {
         $submissions = $assessment->submissions()
@@ -99,23 +97,23 @@ class AdminAssessmentController extends Controller
         ]);
     }
 
-    /**
-     * Mark a submission and award a score.
-     */
     public function mark(Request $request, AssessmentSubmission $submission): RedirectResponse
     {
         $data = $request->validate([
-            'score' => ['required', 'integer', 'min:0', 'max:100'],
+            'question_marks' => ['required', 'array'],
+            'question_marks.*.question_index' => ['required', 'integer', 'min:0'],
+            'question_marks.*.awarded' => ['required', 'numeric', 'min:0'],
             'marker_notes' => ['nullable', 'string', 'max:2000'],
         ]);
 
-        $submission->update([
-            'score' => $data['score'],
-            'marker_notes' => $data['marker_notes'] ?? null,
-            'marked_at' => now(),
-        ]);
+        $score = $this->assessmentService->mark(
+            $submission->assessment,
+            $submission,
+            $data['question_marks'],
+            $data['marker_notes'] ?? null,
+        );
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => 'Submission marked successfully.']);
+        Inertia::flash('toast', ['type' => 'success', 'message' => "Submission marked: {$score}%."]);
 
         return back();
     }

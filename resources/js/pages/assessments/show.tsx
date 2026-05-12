@@ -1,8 +1,18 @@
 import { Head, router } from '@inertiajs/react';
-import { Clock, AlertTriangle, Send } from 'lucide-react';
+import { AlertTriangle, Clock, Send, Star } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-type Question = { question: string; marks: number };
+type QuestionType = 'text' | 'mcq';
+
+type Question = {
+    question: string;
+    marks: number;
+    optional: boolean;
+    type: QuestionType;
+    options?: string[];
+    correct_index?: number | null;
+};
+
 type Assessment = {
     id: number;
     title: string;
@@ -10,7 +20,12 @@ type Assessment = {
     questions: Question[];
     time_limit_minutes: number;
 };
-type Submission = { id: number; answers: { question_index: number; answer: string }[]; started_at: string };
+
+type Submission = {
+    id: number;
+    answers: { question_index: number; answer: string }[];
+    started_at: string;
+};
 
 function formatTime(seconds: number): string {
     const h = Math.floor(seconds / 3600);
@@ -50,7 +65,6 @@ export default function AssessmentShow({
         router.post(`/assessments/${assessment.id}/submit`, { answers: payload });
     }, [answers, assessment.id, assessment.questions, submitting]);
 
-    // Countdown timer
     useEffect(() => {
         if (remaining <= 0) { doSubmit(); return; }
         const id = setInterval(() => {
@@ -63,8 +77,13 @@ export default function AssessmentShow({
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const totalMarks = assessment.questions.reduce((s, q) => s + q.marks, 0);
-    const isLowTime = remaining <= 300; // 5 minutes
-    const answeredCount = Object.values(answers).filter((a) => a.trim()).length;
+    const isLowTime = remaining <= 300;
+
+    // Count answered: text = non-empty string, MCQ = any selection
+    const answeredCount = assessment.questions.filter((q, i) => {
+        const a = answers[i];
+        return a !== undefined && a !== '';
+    }).length;
 
     return (
         <>
@@ -95,24 +114,59 @@ export default function AssessmentShow({
 
                 {/* Questions */}
                 {assessment.questions.map((q, i) => (
-                    <div key={i} className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
-                        <div className="flex items-start justify-between gap-4 border-b border-gray-50 bg-gray-50/60 px-5 py-3.5">
-                            <p className="text-sm font-semibold text-gray-900">
-                                <span className="mr-2 text-brand-600">Q{i + 1}.</span>
-                                {q.question}
-                            </p>
+                    <div key={i} className={`overflow-hidden rounded-2xl border bg-white shadow-sm ${q.optional ? 'border-amber-100' : 'border-gray-100'}`}>
+                        {/* Question header */}
+                        <div className={`flex items-start justify-between gap-4 border-b px-5 py-3.5 ${q.optional ? 'border-amber-50 bg-amber-50/60' : 'border-gray-50 bg-gray-50/60'}`}>
+                            <div className="flex-1">
+                                <p className="text-sm font-semibold text-gray-900">
+                                    <span className="mr-2 text-brand-600">Q{i + 1}.</span>
+                                    {q.question}
+                                </p>
+                                {q.optional && (
+                                    <span className="mt-1 inline-flex items-center gap-1 text-xs text-amber-600">
+                                        <Star className="size-3" /> Optional
+                                    </span>
+                                )}
+                            </div>
                             <span className="shrink-0 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-600">
                                 {q.marks} mark{q.marks !== 1 ? 's' : ''}
                             </span>
                         </div>
+
+                        {/* Answer area */}
                         <div className="p-5">
-                            <textarea
-                                rows={5}
-                                value={answers[i] ?? ''}
-                                onChange={(e) => setAnswers((prev) => ({ ...prev, [i]: e.target.value }))}
-                                placeholder="Type your answer here…"
-                                className="w-full resize-y rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-400/20"
-                            />
+                            {q.type === 'mcq' && q.options ? (
+                                <div className="space-y-2">
+                                    {q.options.map((opt, oi) => (
+                                        <label
+                                            key={oi}
+                                            className={`flex cursor-pointer items-center gap-3 rounded-lg border px-4 py-3 text-sm transition-colors ${
+                                                answers[i] === String(oi)
+                                                    ? 'border-brand-400 bg-brand-50 font-medium text-brand-800'
+                                                    : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-brand-200 hover:bg-brand-50/30'
+                                            }`}
+                                        >
+                                            <input
+                                                type="radio"
+                                                name={`q-${i}`}
+                                                value={String(oi)}
+                                                checked={answers[i] === String(oi)}
+                                                onChange={() => setAnswers((prev) => ({ ...prev, [i]: String(oi) }))}
+                                                className="accent-brand-600"
+                                            />
+                                            {opt || <span className="italic text-gray-400">Option {oi + 1}</span>}
+                                        </label>
+                                    ))}
+                                </div>
+                            ) : (
+                                <textarea
+                                    rows={5}
+                                    value={answers[i] ?? ''}
+                                    onChange={(e) => setAnswers((prev) => ({ ...prev, [i]: e.target.value }))}
+                                    placeholder="Type your answer here…"
+                                    className="w-full resize-y rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition-colors placeholder:text-gray-400 focus:border-brand-400 focus:bg-white focus:ring-2 focus:ring-brand-400/20"
+                                />
+                            )}
                         </div>
                     </div>
                 ))}
@@ -121,7 +175,7 @@ export default function AssessmentShow({
                 <div className="fixed bottom-0 left-0 right-0 border-t border-gray-200 bg-white px-4 py-3 md:px-6">
                     <div className="mx-auto flex max-w-3xl items-center justify-between gap-4">
                         <p className="text-xs text-gray-500">
-                            {answeredCount} of {assessment.questions.length} questions answered
+                            {answeredCount} of {assessment.questions.length} answered
                         </p>
                         <button
                             onClick={() => setShowConfirm(true)}
@@ -150,16 +204,10 @@ export default function AssessmentShow({
                             </p>
                         </div>
                         <div className="flex gap-2 border-t border-gray-100 bg-gray-50 px-6 py-4">
-                            <button
-                                onClick={() => setShowConfirm(false)}
-                                className="flex-1 rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100"
-                            >
+                            <button onClick={() => setShowConfirm(false)} className="flex-1 rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100">
                                 Go Back
                             </button>
-                            <button
-                                onClick={() => { setShowConfirm(false); doSubmit(); }}
-                                className="flex-1 rounded-xl bg-brand-600 py-2.5 text-sm font-bold text-white hover:bg-brand-700"
-                            >
+                            <button onClick={() => { setShowConfirm(false); doSubmit(); }} className="flex-1 rounded-xl bg-brand-600 py-2.5 text-sm font-bold text-white hover:bg-brand-700">
                                 Yes, Submit
                             </button>
                         </div>

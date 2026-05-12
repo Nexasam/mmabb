@@ -182,6 +182,29 @@
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-heading);
     }
+
+    /* ── Always-visible placeholder text ── */
+    input::placeholder,
+    textarea::placeholder {
+        color: #9ca3af !important; /* gray-400 — visible on both light and dark inputs */
+        opacity: 1;
+    }
+
+    /* ── Inputs: always light background with dark text ── */
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]),
+    textarea,
+    select {
+        background-color: #f9fafb !important; /* gray-50 */
+        color: #111827 !important;            /* gray-900 */
+        border-color: #e5e7eb !important;     /* gray-200 */
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):focus,
+    textarea:focus,
+    select:focus {
+        background-color: #ffffff !important;
+        border-color: #3d3c8a !important;
+    }
 }
 
 /* ── Sidebar wrapper — soft purple tint, content stays white ── */

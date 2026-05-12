@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ApplicationStatus;
 use App\Models\Course;
 use App\Models\Material;
 use Illuminate\Support\Facades\Gate;
@@ -18,7 +19,7 @@ class UserMaterialController extends Controller
         $user = auth()->user();
 
         $approvedCourseIds = $user->applications()
-            ->where('status', 'approved')
+            ->where('status', ApplicationStatus::Approved->value)
             ->pluck('course_id');
 
         $courses = Course::whereIn('id', $approvedCourseIds)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\ApplicationStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateApplicationStatusRequest;
 use App\Models\Application;
@@ -11,9 +12,6 @@ use Inertia\Response;
 
 class AdminApplicationController extends Controller
 {
-    /**
-     * Display all applications with optional status filter.
-     */
     public function index(): Response
     {
         $status = request()->query('status');
@@ -26,9 +24,9 @@ class AdminApplicationController extends Controller
 
         $counts = [
             'total' => Application::count(),
-            'pending' => Application::where('status', 'pending')->count(),
-            'approved' => Application::where('status', 'approved')->count(),
-            'rejected' => Application::where('status', 'rejected')->count(),
+            'pending' => Application::where('status', ApplicationStatus::Pending->value)->count(),
+            'approved' => Application::where('status', ApplicationStatus::Approved->value)->count(),
+            'rejected' => Application::where('status', ApplicationStatus::Rejected->value)->count(),
         ];
 
         return Inertia::render('admin/applications/index', [
@@ -38,16 +36,13 @@ class AdminApplicationController extends Controller
         ]);
     }
 
-    /**
-     * Update the status of an application.
-     */
     public function update(UpdateApplicationStatusRequest $request, Application $application): RedirectResponse
     {
         $application->update($request->validated());
 
         Inertia::flash('toast', [
             'type' => 'success',
-            'message' => 'Application status updated to '.$application->fresh()->status.'.',
+            'message' => 'Application status updated to '.$application->fresh()->status->value.'.',
         ]);
 
         return back();

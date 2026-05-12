@@ -20,6 +20,7 @@ export default defineConfig({
         tailwindcss(),
         wayfinder({
             formVariants: true,
+            phpBinary: 'C:\\php85\\php.exe',
         }),
     ],
 });
