@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminApplicationController;
 use App\Http\Controllers\Admin\AdminAssessmentController;
+use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminMaterialController;
 use App\Http\Controllers\Admin\AdminPageContentController;
 use App\Http\Controllers\Admin\AdminSurveyLinkController;
@@ -57,6 +58,12 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])
     ->group(function () {
         Route::get('/applications', [AdminApplicationController::class, 'index'])->name('applications.index');
         Route::patch('/applications/{application}', [AdminApplicationController::class, 'update'])->name('applications.update');
+
+        // Courses
+        Route::get('/courses', [AdminCourseController::class, 'index'])->name('courses.index');
+        Route::post('/courses', [AdminCourseController::class, 'store'])->name('courses.store');
+        Route::put('/courses/{course}', [AdminCourseController::class, 'update'])->name('courses.update');
+        Route::delete('/courses/{course}', [AdminCourseController::class, 'destroy'])->name('courses.destroy');
 
         Route::get('/materials', [AdminMaterialController::class, 'index'])->name('materials.index');
         Route::post('/materials', [AdminMaterialController::class, 'store'])->name('materials.store');
