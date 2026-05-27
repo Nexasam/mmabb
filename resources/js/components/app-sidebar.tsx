@@ -5,7 +5,9 @@ import {
     ClipboardCheck,
     Globe,
     LayoutGrid,
+    LayoutTemplate,
     Mail,
+    QrCode,
     Settings2,
     Users2,
 } from 'lucide-react';
@@ -49,6 +51,8 @@ export function AppSidebar() {
               { title: 'Applications', href: '/admin/applications', icon: Users2    },
               { title: 'Materials',    href: '/admin/materials',    icon: Settings2 },
               { title: 'Assessments',  href: '/admin/assessments',  icon: ClipboardCheck },
+              { title: 'Survey QR',    href: '/admin/survey-links', icon: QrCode },
+              { title: 'Landing Page', href: '/admin/page-content', icon: LayoutTemplate },
           ]
         : [];
 

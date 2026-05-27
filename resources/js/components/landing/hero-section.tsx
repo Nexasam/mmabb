@@ -12,10 +12,21 @@ const fadeUp = {
     }),
 };
 
-// YouTube video ID — replace with your real video
-const YOUTUBE_ID = 'dQw4w9WgXcQ';
+type HeroSectionProps = {
+    headline?: string;
+    subtext?: string;
+    ctaLabel?: string;
+    ctaHref?: string;
+    youtubeId?: string;
+};
 
-export function HeroSection() {
+export function HeroSection({
+    headline = "Specialist Care\nAnd Support",
+    subtext = 'With over 10 years of experience, we provide specialist clinical training to healthcare professionals supporting children and young people with complex care needs, learning disabilities, and neurological conditions across the UK.',
+    ctaLabel = 'Find out more',
+    ctaHref = '/courses',
+    youtubeId = 'dQw4w9WgXcQ',
+}: HeroSectionProps) {
     const [videoOpen, setVideoOpen] = useState(false);
 
     return (
@@ -68,9 +79,9 @@ export function HeroSection() {
                                 fontWeight: 700,
                             }}
                         >
-                            Specialist Care
-                            <br />
-                            And Support
+                            {headline.split('\n').map((line, i) => (
+                                <span key={i}>{line}{i < headline.split('\n').length - 1 && <br />}</span>
+                            ))}
                         </motion.h1>
 
                         {/* Body copy — Inter, clean and readable */}
@@ -82,9 +93,7 @@ export function HeroSection() {
                             className="mb-8 max-w-md text-base leading-relaxed text-white/90 lg:text-[1.05rem]"
                             style={{ fontFamily: "'Inter', sans-serif" }}
                         >
-                            With over 10 years of experience, we provide specialist clinical training to healthcare
-                            professionals supporting children and young people with complex care needs, learning
-                            disabilities, and neurological conditions across the UK.
+                            {subtext}
                         </motion.p>
 
                         {/* CTA buttons */}
@@ -97,11 +106,11 @@ export function HeroSection() {
                         >
                             {/* Primary — teal/dark, matches reference exactly */}
                             <Link
-                                href="/courses"
+                                href={ctaHref}
                                 className="group inline-flex items-center gap-2 rounded-md bg-[#1a9e8f] px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:bg-[#158075] active:scale-95"
                                 style={{ fontFamily: "'Inter', sans-serif" }}
                             >
-                                Find out more
+                                {ctaLabel}
                                 <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
                             </Link>
 
@@ -225,7 +234,7 @@ export function HeroSection() {
                         <div className="aspect-video w-full">
                             <iframe
                                 className="h-full w-full"
-                                src={`https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&rel=0`}
+                                src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
                                 title="MMAB Consulting — Our Story"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen

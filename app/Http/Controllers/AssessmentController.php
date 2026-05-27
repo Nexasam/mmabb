@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Assessment;
 use App\Models\AssessmentSubmission;
+use App\Models\SurveyLink;
 use App\Services\AssessmentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -44,6 +45,7 @@ class AssessmentController extends Controller
             return Inertia::render('assessments/result', [
                 'assessment' => $assessment->only(['id', 'title', 'questions']),
                 'submission' => $submission->only(['answers', 'submitted_at', 'score', 'marker_notes', 'marked_at']),
+                'surveyLinks' => $this->activeSurveyLinks(),
             ]);
         }
 
@@ -55,6 +57,7 @@ class AssessmentController extends Controller
             return Inertia::render('assessments/result', [
                 'assessment' => $assessment->only(['id', 'title', 'questions']),
                 'submission' => $submission->fresh()->only(['answers', 'submitted_at', 'score', 'marker_notes', 'marked_at']),
+                'surveyLinks' => $this->activeSurveyLinks(),
             ]);
         }
 
@@ -94,5 +97,22 @@ class AssessmentController extends Controller
         Inertia::flash('toast', ['type' => 'success', 'message' => 'Assessment submitted successfully.']);
 
         return to_route('assessments.show', $assessment);
+    }
+
+    /**
+     * @return array<int, array{id: int, title: string, public_url: string}>
+     */
+    private function activeSurveyLinks(): array
+    {
+        return SurveyLink::where('is_active', true)
+            ->latest()
+            ->get()
+            ->map(fn (SurveyLink $link) => [
+                'id' => $link->id,
+                'title' => $link->title,
+                'description' => $link->description,
+                'public_url' => $link->publicUrl(),
+            ])
+            ->all();
     }
 }
