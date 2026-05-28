@@ -18,9 +18,13 @@ export default defineConfig({
             },
         }),
         tailwindcss(),
+        // wayfinder({
+        //     formVariants: true,
+        //     command: 'C:\\php85\\php.exe artisan wayfinder:generate',
+        // }),
         wayfinder({
             formVariants: true,
-            command: 'C:\\php85\\php.exe artisan wayfinder:generate',
+            command: 'php artisan wayfinder:generate',
         }),
     ],
 });
