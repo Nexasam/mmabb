@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         $admin = User::firstOrCreate(
             ['email' => 'admin@mmabconsulting.com'],
             [
-                'name'               => 'Sarah Bennett',
+                'name'               => 'superadmin',
                 'password'           => bcrypt('password'),
                 'role'               => 'admin',
                 'email_verified_at'  => now(),
