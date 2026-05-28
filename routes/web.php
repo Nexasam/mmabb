@@ -3,12 +3,14 @@
 use App\Http\Controllers\Admin\AdminApplicationController;
 use App\Http\Controllers\Admin\AdminAssessmentController;
 use App\Http\Controllers\Admin\AdminCourseController;
+use App\Http\Controllers\Admin\AdminEnquiryController;
 use App\Http\Controllers\Admin\AdminMaterialController;
 use App\Http\Controllers\Admin\AdminPageContentController;
 use App\Http\Controllers\Admin\AdminSurveyLinkController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SurveyLinkController;
@@ -31,6 +33,9 @@ Route::get('/courses/{course:slug}', [CourseController::class, 'show'])->name('c
 // ─── Application form (public submit, auth optional) ─────────────────────────
 Route::get('/courses/{course:slug}/apply', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('/applications', [ApplicationController::class, 'store'])->name('applications.store');
+
+// ─── Contact enquiry (public) ─────────────────────────────────────────────────
+Route::post('/enquiries', [EnquiryController::class, 'store'])->name('enquiries.store');
 
 // ─── Authenticated user area ──────────────────────────────────────────────────
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -87,6 +92,11 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])
         Route::get('/page-content', [AdminPageContentController::class, 'index'])->name('page-content.index');
         Route::put('/page-content/{pageContent}', [AdminPageContentController::class, 'update'])->name('page-content.update');
         Route::post('/page-content/bulk', [AdminPageContentController::class, 'bulkUpdate'])->name('page-content.bulk');
+
+        // Enquiries
+        Route::get('/enquiries', [AdminEnquiryController::class, 'index'])->name('enquiries.index');
+        Route::patch('/enquiries/{enquiry}/read', [AdminEnquiryController::class, 'markRead'])->name('enquiries.read');
+        Route::delete('/enquiries/{enquiry}', [AdminEnquiryController::class, 'destroy'])->name('enquiries.destroy');
     });
 
 require __DIR__.'/settings.php';

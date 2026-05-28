@@ -7,6 +7,7 @@ import {
     LayoutGrid,
     LayoutTemplate,
     Mail,
+    MessageSquare,
     QrCode,
     Settings2,
     Users2,
@@ -48,11 +49,12 @@ export function AppSidebar() {
 
     const adminNavItems: NavItem[] = auth.isAdmin
         ? [
-              { title: 'Applications', href: '/admin/applications', icon: Users2    },
-              { title: 'Courses',      href: '/admin/courses',      icon: BookOpen  },
-              { title: 'Materials',    href: '/admin/materials',    icon: Settings2 },
+              { title: 'Applications', href: '/admin/applications', icon: Users2        },
+              { title: 'Courses',      href: '/admin/courses',      icon: BookOpen      },
+              { title: 'Materials',    href: '/admin/materials',    icon: Settings2     },
               { title: 'Assessments',  href: '/admin/assessments',  icon: ClipboardCheck },
-              { title: 'Survey QR',    href: '/admin/survey-links', icon: QrCode },
+              { title: 'Enquiries',    href: '/admin/enquiries',    icon: MessageSquare },
+              { title: 'Survey QR',    href: '/admin/survey-links', icon: QrCode        },
               { title: 'Landing Page', href: '/admin/page-content', icon: LayoutTemplate },
           ]
         : [];

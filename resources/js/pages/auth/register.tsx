@@ -1,4 +1,4 @@
-import { Form, Head } from '@inertiajs/react';
+import { Form, Head, Link } from '@inertiajs/react';
 import { ArrowRight } from 'lucide-react';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
@@ -122,12 +122,12 @@ export default function Register() {
                             </div>
                         </div>
 
-                        <a
+                        <Link
                             href={login()}
                             className="flex w-full items-center justify-center rounded-xl border border-brand-200 py-3 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
                         >
                             Log in instead
-                        </a>
+                        </Link>
                     </>
                 )}
             </Form>

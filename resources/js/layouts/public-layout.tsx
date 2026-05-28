@@ -301,7 +301,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             Call Us
                         </a>
                         <Link
-                            href="/courses/paediatric-complex-care-3-day/apply"
+                            href="/courses"
                             className="rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-brand-300/30 transition-all duration-200 hover:from-brand-700 hover:to-brand-600 hover:shadow-lg active:scale-95"
                         >
                             Apply Now
@@ -463,7 +463,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     </div>
                                 )}
                                 <Link
-                                    href="/courses/paediatric-complex-care-3-day/apply"
+                                    href="/courses"
                                     onClick={() => setMobileOpen(false)}
                                     className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 py-3 text-sm font-bold text-white shadow-md transition-all hover:from-brand-700 hover:to-brand-600"
                                 >

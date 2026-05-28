@@ -1,4 +1,4 @@
-import { Head, router, useForm } from '@inertiajs/react';
+import { Head, Link, router, useForm } from '@inertiajs/react';
 import { ClipboardCheck, Eye, GripVertical, Pencil, Plus, Trash2, X } from 'lucide-react';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -422,9 +422,9 @@ export default function AdminAssessmentsIndex({ courses }: { courses: CourseWith
                                                             </div>
                                                         </div>
                                                         <div className="flex items-center gap-1.5">
-                                                            <a href={`/admin/assessments/${assessment.id}/submissions`} className="flex h-8 w-8 items-center justify-center rounded-lg text-brand-500 hover:bg-brand-50" title="View submissions">
+                                                            <Link href={`/admin/assessments/${assessment.id}/submissions`} className="flex h-8 w-8 items-center justify-center rounded-lg text-brand-500 hover:bg-brand-50" title="View submissions">
                                                                 <Eye className="size-4" />
-                                                            </a>
+                                                            </Link>
                                                             <button onClick={() => setEditTarget({ ...assessment, course_id: course.id })} className="flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 hover:bg-gray-50 hover:text-gray-600" title="Edit">
                                                                 <Pencil className="size-4" />
                                                             </button>

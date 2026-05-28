@@ -316,7 +316,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                     </div>
                     <motion.div {...fadeUp(0.3)} className="mt-14 text-center">
                         <Button asChild size="lg" className="group bg-brand-600 font-semibold text-white shadow-lg hover:bg-brand-700 active:scale-95 transition-all duration-200">
-                            <Link href="/courses/paediatric-complex-care-3-day/apply">
+                            <Link href="/courses">
                                 Start Your Journey
                                 <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" />
                             </Link>

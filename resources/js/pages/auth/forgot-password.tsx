@@ -1,4 +1,4 @@
-import { Form, Head } from '@inertiajs/react';
+import { Form, Head, Link } from '@inertiajs/react';
 import { ArrowRight, Mail } from 'lucide-react';
 import InputError from '@/components/input-error';
 import { Input } from '@/components/ui/input';
@@ -60,12 +60,12 @@ export default function ForgotPassword({ status }: { status?: string }) {
                         </button>
 
                         <div className="text-center">
-                            <a
+                            <Link
                                 href={login()}
                                 className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
                             >
                                 ← Back to log in
-                            </a>
+                            </Link>
                         </div>
                     </>
                 )}

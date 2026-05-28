@@ -1,4 +1,4 @@
-import { Head, router } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import { ArrowLeft, CheckCircle2, AlertCircle, Star } from 'lucide-react';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -113,12 +113,12 @@ export default function AdminAssessmentSubmissions({
             <div className="flex h-full flex-1 flex-col gap-6 p-4 md:p-6">
                 {/* Header */}
                 <div className="flex items-start gap-3">
-                    <a
+                    <Link
                         href="/admin/assessments"
                         className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50"
                     >
                         <ArrowLeft className="size-4" />
-                    </a>
+                    </Link>
                     <div>
                         <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">{assessment.course.title}</p>
                         <h1 className="text-2xl font-extrabold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>

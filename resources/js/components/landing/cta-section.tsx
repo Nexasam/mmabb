@@ -71,9 +71,9 @@ export function CTASection({
                         size="lg"
                         className="group border border-white/30 bg-white/10 font-semibold text-white backdrop-blur-sm hover:bg-white/20 active:scale-95 transition-all duration-200"
                     >
-                        <Link href="/courses/paediatric-complex-care-3-day/apply">
+                        <Link href="/courses">
                             <CalendarCheck className="mr-2 size-4 transition-transform group-hover:scale-110" />
-                            Book Assessment
+                            Apply Now
                         </Link>
                     </Button>
                     <Button
