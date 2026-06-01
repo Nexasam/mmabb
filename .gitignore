@@ -26,6 +26,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
-*.mp4
 composer.phar
-/public/videos
+# Ignore loose mp4 files in root but allow public/videos/
+/*.mp4
