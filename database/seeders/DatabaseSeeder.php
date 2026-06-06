@@ -80,9 +80,9 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($users as $i => $user) {
-            $targetCourse = $i % 2 === 0 ? $course : $complexCourse;
+            $targetCourse = $i % 2 === 0 ? $complexCourse : $course;
             if (! $targetCourse) {
-                $targetCourse = $course;
+                $targetCourse = $complexCourse ?? $course;
             }
 
             Application::firstOrCreate(

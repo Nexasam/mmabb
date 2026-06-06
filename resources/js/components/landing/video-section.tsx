@@ -114,17 +114,23 @@ export function VideoSection({
                 >
                     {/* Video element */}
                     <div className="relative aspect-video w-full bg-black">
-                        <video
-                            ref={videoRef}
-                            src={src}
-                            className="h-full w-full object-cover"
-                            onTimeUpdate={handleTimeUpdate}
-                            onLoadedMetadata={handleLoadedMetadata}
-                            onEnded={() => setPlaying(false)}
-                            playsInline
-                            preload="metadata"
-                            aria-label="MMAB Consulting — See how we make a difference"
-                        />
+                        {src ? (
+                            <video
+                                ref={videoRef}
+                                src={src}
+                                className="h-full w-full object-cover"
+                                onTimeUpdate={handleTimeUpdate}
+                                onLoadedMetadata={handleLoadedMetadata}
+                                onEnded={() => setPlaying(false)}
+                                playsInline
+                                preload="metadata"
+                                aria-label="MMAB Consulting — See how we make a difference"
+                            />
+                        ) : (
+                            <div className="flex h-full w-full items-center justify-center bg-brand-900">
+                                <p className="text-sm text-brand-300">Video coming soon</p>
+                            </div>
+                        )}
 
                         {/* Dark gradient overlay — fades out when playing & not hovered */}
                         <div
@@ -132,8 +138,6 @@ export function VideoSection({
                                 playing && !hovered ? 'opacity-0' : 'opacity-100'
                             }`}
                         />
-
-                        {/* Centre play/pause button */}
                         <button
                             onClick={togglePlay}
                             className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-400 ${
