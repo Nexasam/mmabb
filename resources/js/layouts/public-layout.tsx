@@ -259,10 +259,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         />
                         <div className="hidden border-l border-gray-200 pl-3 sm:block">
                             <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-600">
-                                Home Care
+                                Nurse-Led Care
                             </div>
                             <div className="text-[9px] font-medium text-gray-400">
-                                CQC-Rated GOOD
+                                CQC Rated Good
                             </div>
                         </div>
                     </Link>
@@ -351,10 +351,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     />
                                     <div className="border-l border-gray-200 pl-2.5">
                                         <div className="text-[10px] font-semibold uppercase tracking-widest text-brand-600">
-                                            Home Care
+                                            Nurse-Led Care
                                         </div>
                                         <div className="text-[9px] text-gray-400">
-                                            CQC-Rated GOOD
+                                            CQC Rated Good
                                         </div>
                                     </div>
                                 </div>
@@ -499,10 +499,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                 />
                                 <div className="border-l border-white/20 pl-3">
                                     <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-300">
-                                        Home Care
+                                        Nurse-Led Care
                                     </div>
                                     <div className="text-[9px] text-gray-500">
-                                        CQC-Rated GOOD
+                                        CQC Rated Good
                                     </div>
                                 </div>
                             </div>

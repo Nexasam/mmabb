@@ -32,12 +32,12 @@ const fadeUp = (delay = 0) => ({
 });
 
 const defaultServices = [
-    { icon: 'HeartPulse',    title: 'Complex & Clinical Care',      description: 'Nurse-led care for tracheostomy, home ventilation, enteral feeding (PEG/J, NGT/J), seizure management, and a wide range of neurological conditions — delivered safely at home.',    href: '/contact' },
-    { icon: 'Brain',         title: 'Mental Health & LD Support',   description: 'Specialist support for adults and young people with mental health conditions, learning disabilities, and autism — tailored to individual needs and delivered in the community.',      href: '/contact' },
-    { icon: 'Users',         title: 'Domiciliary & Respite Care',   description: 'Flexible domiciliary and respite care for adults and young people, enabling independence and giving families the breaks they need.',                                                href: '/contact' },
-    { icon: 'Stethoscope',   title: 'Clinical Training',            description: 'CPD-accredited complex care training and educational support for healthcare professionals, covering clinical skills, compliance, and best practice.',                                 href: '/courses' },
-    { icon: 'ClipboardList', title: 'Business Consultancy',         description: 'Clinical business consultancy to help care providers improve quality, meet CQC standards, and strengthen their governance and compliance frameworks.',                                href: '/contact' },
-    { icon: 'ShieldCheck',   title: 'ICB & NHS Partnerships',       description: 'We work directly with ICBs, NHS teams, and local authorities to accept new packages quickly, with nurse-led oversight and a strong focus on safety and person-centred outcomes.',   href: '/contact' },
+    { icon: 'HeartPulse',  title: 'Complex Clinical Care',          description: 'Nurse-led care at home for adults and children with neurological conditions, brain injury, spinal injury, tracheostomy, airway management, PEG feeding, and other complex health needs — enabling people to live safely in their own homes.',   href: '/contact' },
+    { icon: 'Brain',       title: 'Learning Disabilities & Autism', description: 'Personalised support for adults and young people with learning disabilities and autism, helping them build confidence, develop life skills, and live independently within their communities.',                                               href: '/contact' },
+    { icon: 'Heart',       title: 'Mental Health Support',          description: 'Compassionate, condition-specific care for people living with mental health conditions — with personalised plans focused on emotional wellbeing, stability, and recovery in familiar surroundings.',                                           href: '/contact' },
+    { icon: 'Users',       title: 'Domiciliary Care',               description: 'Flexible, person-centred support with daily living — personal care, meal preparation, mobility, household tasks, and community access — built around each person\'s own routines and preferences.',                                           href: '/contact' },
+    { icon: 'HeartPulse',  title: 'Respite & End of Life Care',     description: 'Short-term respite to give family carers a well-earned break, and compassionate end of life care that prioritises dignity, comfort, and choice in the place people call home.',                                                               href: '/contact' },
+    { icon: 'ShieldCheck', title: 'Commissioner Partnerships',      description: 'We work closely with ICBs, NHS teams, and local authorities across North and South East England — accepting new packages quickly, with full nurse-led clinical oversight.',                                                                   href: '/contact' },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
@@ -46,31 +46,31 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const defaultWhyPoints = [
-    { title: 'CQC-Rated GOOD',           description: 'Our most recent CQC inspection rated us GOOD, reflecting our commitment to safe, effective, and person-centred care.' },
-    { title: 'Nurse-Led',                 description: 'All our services are clinically led by experienced nurses, ensuring the highest standards of care and oversight.' },
-    { title: 'Complex Care Specialists',  description: 'We are leaders in complex and clinical home care, supporting service users with the most challenging and high-acuity needs.' },
-    { title: 'CPD-Accredited Training',   description: 'Our training arm delivers CPD-accredited programmes and educational support to healthcare professionals and organisations.' },
-    { title: 'Flexible Packages',         description: 'We accept new packages quickly and can tailor services to the needs of ICBs, NHS teams, local authorities, and individual families.' },
-    { title: 'Values-Driven Leadership',  description: 'Our management team leads by example with a strong focus on values, staff support, and continuous improvement.' },
+    { title: 'CQC Rated Good',           description: 'Our CQC rating reflects a genuine commitment to safe, effective, and person-centred care — not just on inspection day, but every day.' },
+    { title: 'Nurse-Led',                description: 'All care is overseen by experienced nurses. That clinical rigour means better outcomes and safer care for the people we support.' },
+    { title: 'Complex Care Specialists', description: 'We support people with the most complex needs at home — tracheostomy, ventilation, brain injury, neurological conditions — so they can stay in their family and community.' },
+    { title: 'Person-Centred Always',    description: 'Every care plan is shaped by the individual — what they want, what matters to them, and how they want to live their life.' },
+    { title: 'We Move Quickly',          description: 'When someone needs care, waiting isn\'t an option. We work quickly to have safe, high-quality care in place — often within 72 hours of referral.' },
+    { title: 'Values-Driven',            description: '"Management led by example, with a strong focus on values and staff support." — CQC Inspection Report.' },
 ];
 
 const defaultTestimonials = [
-    { quote: 'MMAB Home Care stepped in at short notice to support one of our most complex packages. The nurse-led team handled everything professionally and the family felt genuinely supported throughout.', name: 'NHS Complex Care Manager',  role: 'Integrated Care Board',          rating: 5 },
-    { quote: 'The clinical knowledge of the MMAB team is outstanding. They manage tracheostomy and ventilator care at home to a standard I rarely see from independent providers. I have no hesitation referring packages to them.',         name: 'Community Nursing Lead',    role: 'NHS Trust', rating: 5 },
-    { quote: 'The CPD training we received from MMAB transformed how our team approaches complex care. It was practical, clinically rigorous, and immediately applicable to our day-to-day work.', name: 'Registered Manager', role: 'Independent Care Provider',          rating: 5 },
+    { quote: 'MMAB stepped in at short notice to support one of our most complex packages. The nurse-led team were professional throughout and the family felt truly supported from day one.', name: 'NHS Complex Care Manager',  role: 'Integrated Care Board',   rating: 5 },
+    { quote: 'The clinical knowledge of the MMAB team is outstanding. They manage tracheostomy and ventilator care at home to a standard I rarely see from independent providers. I have no hesitation referring packages to them.', name: 'Community Nursing Lead', role: 'NHS Trust', rating: 5 },
+    { quote: 'Having MMAB support our family member at home has made an enormous difference. The carers are skilled, consistent, and genuinely caring. We finally feel like we can breathe.', name: 'Family Carer', role: 'North East England', rating: 5 },
 ];
 
 const defaultCases = [
-    { tag: 'Complex Care',        title: 'Home ventilation and tracheostomy care for a young adult',  story: 'An ICB referred a young adult with complex respiratory needs following a prolonged hospital admission. Our nurse-led team established a safe care package within 72 hours, enabling discharge and supporting the individual to return to their family home.',       outcome: 'Successful discharge within 72 hours'  },
-    { tag: 'Mental Health & LD',  title: 'Supporting transition for a young person with autism',      story: 'A local authority commissioned MMAB to support a young person with autism and complex behaviours through a transition from residential care. Our team delivered person-centred community support, resulting in a stable placement and improved wellbeing.',   outcome: 'Stable community placement achieved'   },
-    { tag: 'Clinical Training',   title: 'Upskilling a care team in complex clinical procedures',     story: 'An independent provider commissioned bespoke CPD-accredited training for their staff covering enteral feeding, seizure management, and respiratory care. Post-training assessment confirmed significant improvements in clinical competency across the team.',  outcome: 'Measurable competency improvement'      },
+    { tag: 'Complex Clinical Care',  title: 'Safe home discharge for a young adult requiring ventilation',       story: 'An ICB referred a young adult with complex respiratory needs following a prolonged hospital admission. Our nurse-led team established a safe home care package within 72 hours, enabling discharge and allowing the individual to return to family life.',  outcome: 'Home discharge achieved within 72 hours' },
+    { tag: 'Learning Disability',    title: 'Supporting a young person with autism through a complex transition', story: 'A local authority commissioned MMAB to support a young person with autism and complex behaviours through a transition from residential care. Our team provided consistent, person-centred support, resulting in a stable home placement and improved wellbeing.', outcome: 'Stable home placement maintained'         },
+    { tag: 'Domiciliary Care',       title: 'Enabling independence for an adult with neurological needs',         story: 'Following a brain injury, a middle-aged adult required daily support to live at home rather than in a residential setting. MMAB built a flexible care package around their goals — supporting independence, community access, and quality of life.',           outcome: 'Residential placement avoided'           },
 ];
 
 const processSteps = [
-    { number: '01', icon: ClipboardList, title: 'Get in Touch',        description: 'Contact our team to discuss a referral, new package, or enquiry. We respond within 24 hours.' },
-    { number: '02', icon: BookOpen,      title: 'Needs Assessment',    description: 'We carry out a thorough assessment to understand the individual\'s care needs and agree a tailored care plan.' },
-    { number: '03', icon: Users,         title: 'Care Mobilisation',   description: 'Our nurse-led team mobilises quickly, recruiting and matching the right staff to deliver safe, consistent care.' },
-    { number: '04', icon: Award,         title: 'Ongoing Oversight',   description: 'Regular clinical reviews, quality monitoring, and open communication ensure care remains outstanding.' },
+    { number: '01', icon: Phone,         title: 'Get in Touch',        description: 'Call us or fill in the form. Tell us about the person who needs care and we\'ll respond within 24 hours.' },
+    { number: '02', icon: ClipboardList, title: 'Care Assessment',     description: 'We visit and carry out a thorough assessment to understand the individual\'s needs, preferences, and goals.' },
+    { number: '03', icon: Users,         title: 'Care Begins',         description: 'We match the right carers, agree a plan, and mobilise quickly — often within 72 hours for urgent packages.' },
+    { number: '04', icon: Award,         title: 'Ongoing Support',     description: 'Regular reviews, open communication, and nurse-led oversight ensure care stays safe and truly person-centred.' },
 ];
 
 type Cms = Record<string, string>;
@@ -81,48 +81,52 @@ function parseJson<T>(raw: string | undefined, fallback: T): T {
 }
 
 export default function Home({ cms = {} }: { cms?: Cms }) {
-    const heroHeadline   = cms['hero.headline']   ?? "Specialist Care\nFor Every Need";
-    const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Home Care is a CQC-rated GOOD, nurse-led provider serving North and South East England. We deliver complex clinical care, mental health and LD support, and domiciliary care to adults and young people in the comfort of their own homes — in partnership with ICBs, NHS teams, and local authorities.';
-    const heroCtaLabel   = cms['hero.cta_label']  ?? 'Refer a package';
+    const heroHeadline   = cms['hero.headline']   ?? "Specialist Care\nAt Home";
+    const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Home Care is a CQC-rated Good, nurse-led provider serving North and South East England. We deliver complex clinical care, learning disability and autism support, mental health care, and domiciliary services — so people can live well in the comfort of their own homes.';
+    const heroCtaLabel   = cms['hero.cta_label']  ?? 'Enquire About Care';
     const heroCtaHref    = cms['hero.cta_href']   ?? '/contact';
     const heroYoutubeId  = cms['hero.youtube_id'] ?? 'dQw4w9WgXcQ';
 
     const statsItems     = parseJson<{ value: string; label: string }[]>(cms['stats'], [
-        { value: 'GOOD',       label: 'CQC Rating' }, { value: 'Nurse-Led', label: 'Clinical Leadership' },
-        { value: 'CPD',        label: 'Accredited Training' }, { value: 'NE England', label: 'North & South East' },
+        { value: 'Good',       label: 'CQC Rating'        },
+        { value: 'Nurse-Led',  label: 'Clinical Leadership'},
+        { value: '30+',        label: 'Years Experience'  },
+        { value: 'NE England', label: 'Coverage Area'     },
     ]);
 
-    const servicesBadge    = cms['services.badge']    ?? 'What We Provide';
-    const servicesHeadline = cms['services.headline'] ?? 'Comprehensive nurse-led care across every need';
-    const servicesSubtext  = cms['services.subtext']  ?? 'From complex clinical care at home to mental health support and CPD-accredited training, we deliver flexible, high-quality services to individuals, families, and healthcare organisations.';
+    const servicesBadge    = cms['services.badge']    ?? 'Our Care Services';
+    const servicesHeadline = cms['services.headline'] ?? 'Specialist care at home, for every need';
+    const servicesSubtext  = cms['services.subtext']  ?? 'We provide high-quality, nurse-led care to adults and young people across North and South East England — enabling people to live safely and independently in their own homes.';
     const servicesItems    = parseJson<{ icon?: string; title: string; description: string; href: string }[]>(cms['services.items'], defaultServices);
 
-    const whyHeadline = cms['why.headline'] ?? 'The MMAB Home Care Difference';
-    const whySubtext  = cms['why.subtext']  ?? 'We are a CQC-rated GOOD, nurse-led provider with deep expertise in complex and clinical care. Our Operations Director brings a wide range of industry experience, and our CQC report noted: "Management led by example, with a strong focus on values and staff support."';
+    const whyHeadline = cms['why.headline'] ?? 'Why families and commissioners choose MMAB';
+    const whySubtext  = cms['why.subtext']  ?? 'CQC-rated Good and nurse-led, we bring clinical depth, genuine compassion, and a commitment to getting care right for every person we support. Our recent CQC report noted: "Management led by example, with a strong focus on values and staff support."';
     const whyPoints   = parseJson<{ title: string; description: string }[]>(cms['why.points'], defaultWhyPoints);
 
     const testimonialsHeadline = cms['testimonials.headline'] ?? 'What commissioners and families say';
     const testimonialsItems    = parseJson<{ quote: string; name: string; role: string; rating: number }[]>(cms['testimonials.items'], defaultTestimonials);
 
-    const videoTitle    = cms['video.title']    ?? 'See how we make a difference';
-    const videoSubtitle = cms['video.subtitle'] ?? 'Watch how MMAB Home Care is delivering outstanding nurse-led care and training across the UK.';
+    const videoTitle    = cms['video.title']    ?? 'Care that makes a real difference';
+    const videoSubtitle = cms['video.subtitle'] ?? 'See how MMAB Home Care supports adults and young people to live safely and independently in North and South East England.';
 
-    const casesHeadline = cms['cases.headline'] ?? "How we've supported commissioners and families";
+    const casesHeadline = cms['cases.headline'] ?? 'Real people. Real outcomes.';
     const casesItems    = parseJson<{ tag: string; title: string; story: string; outcome: string }[]>(cms['cases.items'], defaultCases);
 
-    const aboutHeadline = cms['about.headline'] ?? 'CQC-rated GOOD. Nurse-led. Person-centred.';
-    const aboutBody1    = cms['about.body1']    ?? 'MMAB Home Care is a nurse-led provider rated GOOD by the CQC, serving North and South East England. We specialise in complex and clinical care for adults and young people, as well as mental health, learning disability, and autism support — all delivered in the home and community setting.';
-    const aboutBody2    = cms['about.body2']    ?? 'Led by Rosemary Lanlehin, a nurse with over 30 years of clinical, academic, and complex care experience — including 20 years as Programme Director at City University London — our team brings exceptional clinical depth to everything we do. We work in close partnership with ICBs, NHS trusts, and local authorities, and deliver CPD-accredited clinical training and business consultancy.';
+    const aboutHeadline = cms['about.headline'] ?? 'Trusted care, close to home.';
+    const aboutBody1    = cms['about.body1']    ?? 'MMAB Home Care is a nurse-led provider rated Good by the CQC, serving North and South East England. We support adults and young people with complex clinical needs, learning disabilities, autism, mental health conditions, and everyday care needs — so they can live well in the place they call home.';
+    const aboutBody2    = cms['about.body2']    ?? 'Led by Rosemary Lanlehin — a registered nurse with over 30 years of clinical and academic experience — our team brings exceptional depth to every care package. We work closely with ICBs, NHS teams, and local authorities, and we are currently accepting new packages.';
     const aboutStats    = parseJson<{ value: string; label: string }[]>(cms['about.stats'], [
-        { value: 'GOOD',       label: 'CQC Rating' }, { value: 'Nurse-Led', label: 'Clinical Leadership' },
-        { value: 'NE England', label: 'Coverage Area' }, { value: 'CPD', label: 'Accredited Training' },
+        { value: 'Good',       label: 'CQC Rating'          },
+        { value: 'Nurse-Led',  label: 'Clinical Leadership'  },
+        { value: '30+',        label: 'Years Experience'     },
+        { value: 'NE England', label: 'Coverage Area'        },
     ]);
 
-    const ctaHeadline = cms['cta.headline'] ?? 'Currently accepting new packages';
-    const ctaSubtext  = cms['cta.subtext']  ?? 'We are keen to support your team with flexible, nurse-led care solutions. Get in touch today to discuss a new package or to find out more about our services.';
+    const ctaHeadline = cms['cta.headline'] ?? 'Currently accepting new care packages';
+    const ctaSubtext  = cms['cta.subtext']  ?? 'We are keen to support your team or your family with flexible, nurse-led care. Get in touch to discuss a referral — we respond within 24 hours.';
 
-    const contactHeadline = cms['contact.headline'] ?? 'Refer a package or get in touch';
-    const contactSubtext  = cms['contact.subtext']  ?? "Whether you're a commissioner, ICB, local authority, or a family looking for specialist care, we're here to help. Fill in the form and we'll be in touch within 24 hours.";
+    const contactHeadline = cms['contact.headline'] ?? 'Talk to us about care';
+    const contactSubtext  = cms['contact.subtext']  ?? "Whether you're a commissioner, ICB, local authority, or a family looking for specialist care at home — we're here to help. Fill in the form and we'll be in touch within 24 hours.";
 
     const sitePhone = cms['site.phone'] ?? '+44 (0) 000 000 0000';
 
@@ -174,11 +178,10 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                     </div>
                     <motion.div {...fadeUp(0.2)} className="mt-14 flex flex-col items-center gap-3">
                         <Link href="/contact" className="group inline-flex items-center gap-2.5 rounded-2xl bg-brand-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-300/30 transition-all duration-200 hover:bg-brand-700 active:scale-95">
-                            Refer a Package
+                            Enquire About Care
                             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1.5" />
                         </Link>
-                        <p className="text-xs text-gray-400">CQC-rated GOOD · Nurse-led · Currently accepting new packages</p>
-                    </motion.div>
+                        <p className="text-xs text-gray-400">CQC Rated Good · Nurse-led · North &amp; South East England · <Link href="/courses" className="underline underline-offset-2 hover:text-gray-600">Clinical training also available</Link></p>                    </motion.div>
                 </div>
             </section>
 
@@ -217,7 +220,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
             <section className="py-24" aria-labelledby="testimonials-heading">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div {...fadeUp()} className="mb-14 text-center">
-                        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">Social Proof</p>
+                        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">Families &amp; Commissioners</p>
                         <h2 id="testimonials-heading" className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">
                             {testimonialsHeadline}
                         </h2>
@@ -237,7 +240,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
             <section className="py-24" aria-labelledby="case-studies-heading">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div {...fadeUp()} className="mb-14 text-center">
-                        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">Real-World Impact</p>
+                        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">People We've Supported</p>
                         <h2 id="case-studies-heading" className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">
                             {casesHeadline}
                         </h2>
@@ -297,7 +300,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div {...fadeUp()} className="mb-16 text-center">
                         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">How It Works</p>
-                        <h2 id="process-heading" className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">Referring a package is straightforward</h2>
+                        <h2 id="process-heading" className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">Getting care in place is simple</h2>
                     </motion.div>
                     <div className="relative">
                         <div aria-hidden className="absolute top-10 left-[12.5%] hidden h-0.5 w-3/4 bg-gradient-to-r from-brand-100 via-brand-300 to-brand-100 lg:block" />
@@ -317,7 +320,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                     <motion.div {...fadeUp(0.3)} className="mt-14 text-center">
                         <Button asChild size="lg" className="group bg-brand-600 font-semibold text-white shadow-lg hover:bg-brand-700 active:scale-95 transition-all duration-200">
                             <Link href="/contact">
-                                Refer a Package
+                                Enquire About Care
                                 <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
@@ -333,13 +336,18 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid items-center gap-14 lg:grid-cols-2">
                         <motion.div {...fadeUp()}>
-                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">Free Consultation</p>
+                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">Enquire About Care</p>
                             <h2 id="contact-form-heading" className="mb-4 font-heading text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">
                                 {contactHeadline}
                             </h2>
                             <p className="mb-6 text-base leading-relaxed text-gray-600">{contactSubtext}</p>
                             <ul className="mb-8 space-y-3">
-                                {['No obligation — just a conversation', 'Nurse-led assessment and care planning', 'Packages accepted across the UK', 'ICB, NHS, local authority and self-funded referrals welcome'].map((item) => (
+                                {[
+                                    'No obligation — just a conversation',
+                                    'Nurse-led assessment and personalised care planning',
+                                    'ICB, NHS, local authority and self-funded referrals welcome',
+                                    'Care packages available across North and South East England',
+                                ].map((item) => (
                                     <li key={item} className="flex items-center gap-3 text-sm text-gray-700">
                                         <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100">
                                             <CheckCircle className="size-3 text-brand-600" />
@@ -359,7 +367,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                             </div>
                         </motion.div>
                         <motion.div {...fadeUp(0.15)} className="rounded-3xl border border-gray-100 bg-white p-8 shadow-xl">
-                            <h3 className="mb-6 font-heading text-lg font-bold text-gray-900">Request a Free Consultation</h3>
+                            <h3 className="mb-6 font-heading text-lg font-bold text-gray-900">Talk to Us About Care</h3>
                             <LeadForm />
                         </motion.div>
                     </div>
