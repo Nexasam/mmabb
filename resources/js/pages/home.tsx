@@ -32,12 +32,12 @@ const fadeUp = (delay = 0) => ({
 });
 
 const defaultServices = [
-    { icon: 'HeartPulse',   title: 'Paediatric Complex Care',  description: 'Specialist training for professionals supporting children with complex, long-term health conditions requiring nurse-led, multi-disciplinary care.',   href: '/courses/paediatric-complex-care-3-day' },
-    { icon: 'Brain',        title: 'Neurological Conditions',  description: 'Comprehensive modules covering acquired brain injury, epilepsy management, and neurological assessment in paediatric settings.',                    href: '/courses' },
-    { icon: 'Stethoscope',  title: 'Respiratory & Airway',     description: 'Hands-on training in tracheostomy care, ventilator management, and emergency airway protocols for complex care environments.',                     href: '/courses' },
-    { icon: 'ClipboardList',title: 'Enteral Feeding',          description: 'Evidence-based training in NG, NJ, and gastrostomy management, including troubleshooting and family education.',                                   href: '/courses' },
-    { icon: 'Users',        title: 'Family-Centred Care',      description: 'Developing skills to work in genuine partnership with families, carers, and multidisciplinary teams around the child.',                            href: '/courses' },
-    { icon: 'ShieldCheck',  title: 'Safeguarding',             description: 'Recognising and responding to safeguarding concerns specific to children with complex health needs and disabilities.',                              href: '/courses' },
+    { icon: 'HeartPulse',    title: 'Complex & Clinical Care',      description: 'Nurse-led care for tracheostomy, home ventilation, enteral feeding (PEG/J, NGT/J), seizure management, and a wide range of neurological conditions — delivered safely at home.',    href: '/contact' },
+    { icon: 'Brain',         title: 'Mental Health & LD Support',   description: 'Specialist support for adults and young people with mental health conditions, learning disabilities, and autism — tailored to individual needs and delivered in the community.',      href: '/contact' },
+    { icon: 'Users',         title: 'Domiciliary & Respite Care',   description: 'Flexible domiciliary and respite care for adults and young people, enabling independence and giving families the breaks they need.',                                                href: '/contact' },
+    { icon: 'Stethoscope',   title: 'Clinical Training',            description: 'CPD-accredited complex care training and educational support for healthcare professionals, covering clinical skills, compliance, and best practice.',                                 href: '/courses' },
+    { icon: 'ClipboardList', title: 'Business Consultancy',         description: 'Clinical business consultancy to help care providers improve quality, meet CQC standards, and strengthen their governance and compliance frameworks.',                                href: '/contact' },
+    { icon: 'ShieldCheck',   title: 'ICB & NHS Partnerships',       description: 'We work directly with ICBs, NHS teams, and local authorities to accept new packages quickly, with nurse-led oversight and a strong focus on safety and person-centred outcomes.',   href: '/contact' },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
@@ -46,31 +46,31 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const defaultWhyPoints = [
-    { title: 'Nurse-Led Curriculum',    description: 'Every programme is designed and delivered by experienced paediatric complex care nurses.' },
-    { title: 'CPD Accredited',          description: '21 hours of accredited CPD per programme, recognised nationally across the UK.' },
-    { title: 'Regulatory Compliance',   description: 'Content aligned with CQC standards, NMC guidelines, and current national frameworks.' },
-    { title: 'Personalised Support',    description: 'Small group sizes and dedicated facilitators ensure every learner gets the attention they need.' },
-    { title: 'Proven Outcomes',         description: 'Measurable competency improvements tracked through pre- and post-course assessments.' },
-    { title: 'Comprehensive Resources', description: 'Full digital course materials, reference guides, and post-course access to learning resources.' },
+    { title: 'CQC-Rated GOOD',           description: 'Our most recent CQC inspection rated us GOOD, reflecting our commitment to safe, effective, and person-centred care.' },
+    { title: 'Nurse-Led',                 description: 'All our services are clinically led by experienced nurses, ensuring the highest standards of care and oversight.' },
+    { title: 'Complex Care Specialists',  description: 'We are leaders in complex and clinical home care, supporting service users with the most challenging and high-acuity needs.' },
+    { title: 'CPD-Accredited Training',   description: 'Our training arm delivers CPD-accredited programmes and educational support to healthcare professionals and organisations.' },
+    { title: 'Flexible Packages',         description: 'We accept new packages quickly and can tailor services to the needs of ICBs, NHS teams, local authorities, and individual families.' },
+    { title: 'Values-Driven Leadership',  description: 'Our management team leads by example with a strong focus on values, staff support, and continuous improvement.' },
 ];
 
 const defaultTestimonials = [
-    { quote: 'The 3-day course completely transformed how I approach complex care. The clinical scenarios were incredibly realistic and the facilitators were outstanding. I left feeling genuinely confident.', name: 'Sarah Mitchell',  role: 'Paediatric Community Nurse, NHS Trust',          rating: 5 },
-    { quote: 'I have attended many CPD courses over my career, but MMAB stands out for the quality of content and the practical focus. The safeguarding module alone was worth the entire programme.',         name: 'James Okafor',    role: 'Complex Care Coordinator, Independent Provider', rating: 5 },
-    { quote: 'Our whole team attended and the impact on our practice has been immediate. The family-centred care sessions gave us a shared language that has genuinely improved our relationships with families.', name: 'Dr. Priya Sharma', role: 'Clinical Lead, Paediatric Complex Care',          rating: 5 },
+    { quote: 'MMAB Home Care stepped in at short notice to support one of our most complex packages. The nurse-led team handled everything professionally and the family felt genuinely supported throughout.', name: 'NHS Complex Care Manager',  role: 'Integrated Care Board',          rating: 5 },
+    { quote: 'The clinical knowledge of the MMAB team is outstanding. They manage tracheostomy and ventilator care at home to a standard I rarely see from independent providers. I have no hesitation referring packages to them.',         name: 'Community Nursing Lead',    role: 'NHS Trust', rating: 5 },
+    { quote: 'The CPD training we received from MMAB transformed how our team approaches complex care. It was practical, clinically rigorous, and immediately applicable to our day-to-day work.', name: 'Registered Manager', role: 'Independent Care Provider',          rating: 5 },
 ];
 
 const defaultCases = [
-    { tag: 'Clinical Impact',          title: 'Improving tracheostomy safety across a community team',    story: 'A community nursing team of 14 attended the respiratory module following a series of near-miss incidents. Post-training audit showed a 94% improvement in protocol adherence and zero incidents in the 6 months following.', outcome: '94% improvement in protocol adherence' },
-    { tag: 'Professional Development', title: 'Building confidence in newly qualified nurses',            story: 'A cohort of newly qualified nurses reported significant anxiety around complex care placements. Following the 3-day programme, 100% reported feeling "confident" or "very confident" in their clinical decision-making.',     outcome: '100% reported increased confidence'   },
-    { tag: 'Organisational Training',  title: 'Upskilling an entire independent care provider',          story: 'An independent complex care provider commissioned bespoke training for 40 staff across three cohorts. CQC inspection following the programme noted "outstanding" practice in staff knowledge and family engagement.',         outcome: 'CQC "Outstanding" rating achieved'    },
+    { tag: 'Complex Care',        title: 'Home ventilation and tracheostomy care for a young adult',  story: 'An ICB referred a young adult with complex respiratory needs following a prolonged hospital admission. Our nurse-led team established a safe care package within 72 hours, enabling discharge and supporting the individual to return to their family home.',       outcome: 'Successful discharge within 72 hours'  },
+    { tag: 'Mental Health & LD',  title: 'Supporting transition for a young person with autism',      story: 'A local authority commissioned MMAB to support a young person with autism and complex behaviours through a transition from residential care. Our team delivered person-centred community support, resulting in a stable placement and improved wellbeing.',   outcome: 'Stable community placement achieved'   },
+    { tag: 'Clinical Training',   title: 'Upskilling a care team in complex clinical procedures',     story: 'An independent provider commissioned bespoke CPD-accredited training for their staff covering enteral feeding, seizure management, and respiratory care. Post-training assessment confirmed significant improvements in clinical competency across the team.',  outcome: 'Measurable competency improvement'      },
 ];
 
 const processSteps = [
-    { number: '01', icon: ClipboardList, title: 'Initial Assessment', description: 'We discuss your learning needs, professional background, and goals to ensure the right programme for you.' },
-    { number: '02', icon: BookOpen,      title: 'Course Planning',    description: 'We confirm your place, send pre-course materials, and prepare your personalised learning pathway.' },
-    { number: '03', icon: Users,         title: 'Training Delivery',  description: 'Attend your 3-day programme with expert facilitators, practical simulations, and peer learning.' },
-    { number: '04', icon: Award,         title: 'Ongoing Support',    description: 'Receive your CPD certificate, access digital resources, and benefit from post-course clinical support.' },
+    { number: '01', icon: ClipboardList, title: 'Get in Touch',        description: 'Contact our team to discuss a referral, new package, or enquiry. We respond within 24 hours.' },
+    { number: '02', icon: BookOpen,      title: 'Needs Assessment',    description: 'We carry out a thorough assessment to understand the individual\'s care needs and agree a tailored care plan.' },
+    { number: '03', icon: Users,         title: 'Care Mobilisation',   description: 'Our nurse-led team mobilises quickly, recruiting and matching the right staff to deliver safe, consistent care.' },
+    { number: '04', icon: Award,         title: 'Ongoing Oversight',   description: 'Regular clinical reviews, quality monitoring, and open communication ensure care remains outstanding.' },
 ];
 
 type Cms = Record<string, string>;
@@ -81,54 +81,54 @@ function parseJson<T>(raw: string | undefined, fallback: T): T {
 }
 
 export default function Home({ cms = {} }: { cms?: Cms }) {
-    const heroHeadline   = cms['hero.headline']   ?? "Specialist Care\nAnd Support";
-    const heroSubtext    = cms['hero.subtext']    ?? 'With over 10 years of experience, we provide specialist clinical training to healthcare professionals supporting children and young people with complex care needs, learning disabilities, and neurological conditions across the UK.';
-    const heroCtaLabel   = cms['hero.cta_label']  ?? 'Find out more';
-    const heroCtaHref    = cms['hero.cta_href']   ?? '/courses';
+    const heroHeadline   = cms['hero.headline']   ?? "Specialist Care\nFor Every Need";
+    const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Home Care is a CQC-rated GOOD, nurse-led provider serving North and South East England. We deliver complex clinical care, mental health and LD support, and domiciliary care to adults and young people in the comfort of their own homes — in partnership with ICBs, NHS teams, and local authorities.';
+    const heroCtaLabel   = cms['hero.cta_label']  ?? 'Refer a package';
+    const heroCtaHref    = cms['hero.cta_href']   ?? '/contact';
     const heroYoutubeId  = cms['hero.youtube_id'] ?? 'dQw4w9WgXcQ';
 
     const statsItems     = parseJson<{ value: string; label: string }[]>(cms['stats'], [
-        { value: '500+', label: 'Professionals Trained' }, { value: '3-Day', label: 'Intensive Programme' },
-        { value: '21 hrs', label: 'CPD Accredited' },      { value: 'UK-Wide', label: 'Delivery' },
+        { value: 'GOOD',       label: 'CQC Rating' }, { value: 'Nurse-Led', label: 'Clinical Leadership' },
+        { value: 'CPD',        label: 'Accredited Training' }, { value: 'NE England', label: 'North & South East' },
     ]);
 
-    const servicesBadge    = cms['services.badge']    ?? 'What We Cover';
-    const servicesHeadline = cms['services.headline'] ?? 'Specialist training across all areas of complex care';
-    const servicesSubtext  = cms['services.subtext']  ?? 'Our programmes cover the full spectrum of paediatric complex care, from clinical skills to safeguarding and family-centred practice.';
+    const servicesBadge    = cms['services.badge']    ?? 'What We Provide';
+    const servicesHeadline = cms['services.headline'] ?? 'Comprehensive nurse-led care across every need';
+    const servicesSubtext  = cms['services.subtext']  ?? 'From complex clinical care at home to mental health support and CPD-accredited training, we deliver flexible, high-quality services to individuals, families, and healthcare organisations.';
     const servicesItems    = parseJson<{ icon?: string; title: string; description: string; href: string }[]>(cms['services.items'], defaultServices);
 
-    const whyHeadline = cms['why.headline'] ?? 'The MMAB Consulting Difference';
-    const whySubtext  = cms['why.subtext']  ?? 'We are a specialist healthcare training consultancy with a single focus: equipping professionals to deliver outstanding care to children with complex needs.';
+    const whyHeadline = cms['why.headline'] ?? 'The MMAB Home Care Difference';
+    const whySubtext  = cms['why.subtext']  ?? 'We are a CQC-rated GOOD, nurse-led provider with deep expertise in complex and clinical care. Our Operations Director brings a wide range of industry experience, and our CQC report noted: "Management led by example, with a strong focus on values and staff support."';
     const whyPoints   = parseJson<{ title: string; description: string }[]>(cms['why.points'], defaultWhyPoints);
 
-    const testimonialsHeadline = cms['testimonials.headline'] ?? 'What healthcare professionals say';
+    const testimonialsHeadline = cms['testimonials.headline'] ?? 'What commissioners and families say';
     const testimonialsItems    = parseJson<{ quote: string; name: string; role: string; rating: number }[]>(cms['testimonials.items'], defaultTestimonials);
 
     const videoTitle    = cms['video.title']    ?? 'See how we make a difference';
-    const videoSubtitle = cms['video.subtitle'] ?? 'Watch how MMAB Consulting is transforming paediatric complex care training across the UK.';
+    const videoSubtitle = cms['video.subtitle'] ?? 'Watch how MMAB Home Care is delivering outstanding nurse-led care and training across the UK.';
 
-    const casesHeadline = cms['cases.headline'] ?? "How we've helped professionals and teams";
+    const casesHeadline = cms['cases.headline'] ?? "How we've supported commissioners and families";
     const casesItems    = parseJson<{ tag: string; title: string; story: string; outcome: string }[]>(cms['cases.items'], defaultCases);
 
-    const aboutHeadline = cms['about.headline'] ?? 'Specialists in paediatric complex care education';
-    const aboutBody1    = cms['about.body1']    ?? 'MMAB Consulting is a specialist healthcare training consultancy founded by experienced paediatric complex care clinicians. With over a decade of combined NHS and independent sector experience, our team brings unparalleled clinical depth to every programme.';
-    const aboutBody2    = cms['about.body2']    ?? 'We deliver training nationwide, working with NHS trusts, independent care providers, and individual healthcare professionals across the UK.';
+    const aboutHeadline = cms['about.headline'] ?? 'CQC-rated GOOD. Nurse-led. Person-centred.';
+    const aboutBody1    = cms['about.body1']    ?? 'MMAB Home Care is a nurse-led provider rated GOOD by the CQC, serving North and South East England. We specialise in complex and clinical care for adults and young people, as well as mental health, learning disability, and autism support — all delivered in the home and community setting.';
+    const aboutBody2    = cms['about.body2']    ?? 'Led by Rosemary Lanlehin, a nurse with over 30 years of clinical, academic, and complex care experience — including 20 years as Programme Director at City University London — our team brings exceptional clinical depth to everything we do. We work in close partnership with ICBs, NHS trusts, and local authorities, and deliver CPD-accredited clinical training and business consultancy.';
     const aboutStats    = parseJson<{ value: string; label: string }[]>(cms['about.stats'], [
-        { value: '10+', label: 'Years Experience' }, { value: '500+', label: 'Professionals Trained' },
-        { value: 'UK-Wide', label: 'Nationwide Delivery' }, { value: 'CPD', label: 'Accredited Courses' },
+        { value: 'GOOD',       label: 'CQC Rating' }, { value: 'Nurse-Led', label: 'Clinical Leadership' },
+        { value: 'NE England', label: 'Coverage Area' }, { value: 'CPD', label: 'Accredited Training' },
     ]);
 
-    const ctaHeadline = cms['cta.headline'] ?? 'Your journey to better care starts here';
-    const ctaSubtext  = cms['cta.subtext']  ?? 'Speak to our specialist team today and take the first step towards advancing your clinical practice and improving outcomes for the children in your care.';
+    const ctaHeadline = cms['cta.headline'] ?? 'Currently accepting new packages';
+    const ctaSubtext  = cms['cta.subtext']  ?? 'We are keen to support your team with flexible, nurse-led care solutions. Get in touch today to discuss a new package or to find out more about our services.';
 
-    const contactHeadline = cms['contact.headline'] ?? 'Get in touch with our team';
-    const contactSubtext  = cms['contact.subtext']  ?? "Whether you're an individual professional or looking to arrange training for your organisation, we're here to help. Fill in the form and we'll be in touch within 24 hours.";
+    const contactHeadline = cms['contact.headline'] ?? 'Refer a package or get in touch';
+    const contactSubtext  = cms['contact.subtext']  ?? "Whether you're a commissioner, ICB, local authority, or a family looking for specialist care, we're here to help. Fill in the form and we'll be in touch within 24 hours.";
 
     const sitePhone = cms['site.phone'] ?? '+44 (0) 000 000 0000';
 
     return (
         <>
-            <Head title="Specialist Paediatric Complex Care Training | MMAB Consulting" />
+            <Head title="Nurse-Led Home Care | CQC-Rated GOOD | MMAB Home Care" />
 
             {/* ── 1. HERO ── */}
             <HeroSection
@@ -173,11 +173,11 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                         })}
                     </div>
                     <motion.div {...fadeUp(0.2)} className="mt-14 flex flex-col items-center gap-3">
-                        <Link href="/courses" className="group inline-flex items-center gap-2.5 rounded-2xl bg-brand-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-300/30 transition-all duration-200 hover:bg-brand-700 active:scale-95">
-                            View All Courses
+                        <Link href="/contact" className="group inline-flex items-center gap-2.5 rounded-2xl bg-brand-600 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-300/30 transition-all duration-200 hover:bg-brand-700 active:scale-95">
+                            Refer a Package
                             <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-1.5" />
                         </Link>
-                        <p className="text-xs text-gray-400">CPD accredited · Nurse-led · UK-wide delivery</p>
+                        <p className="text-xs text-gray-400">CQC-rated GOOD · Nurse-led · Currently accepting new packages</p>
                     </motion.div>
                 </div>
             </section>
@@ -193,7 +193,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                             </h2>
                             <p className="mb-6 text-base leading-relaxed text-gray-600">{whySubtext}</p>
                             <Button asChild className="group bg-brand-600 font-semibold text-white hover:bg-brand-700 active:scale-95 transition-all duration-200">
-                                <Link href="/about">About MMAB <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" /></Link>
+                                <Link href="/about">About MMAB Home Care <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" /></Link>
                             </Button>
                         </motion.div>
                         <div className="grid gap-4 sm:grid-cols-2">
@@ -267,7 +267,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 shadow-2xl lg:flex">
                         <motion.div {...fadeUp()} className="flex flex-col justify-center p-10 text-white lg:w-3/5 lg:p-14">
-                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-200">About MMAB Consulting</p>
+                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-200">About MMAB Home Care</p>
                             <h2 id="about-heading" className="mb-4 font-heading text-3xl font-extrabold leading-tight lg:text-4xl">{aboutHeadline}</h2>
                             <p className="mb-4 leading-relaxed text-brand-100">{aboutBody1}</p>
                             <p className="mb-6 leading-relaxed text-brand-100">{aboutBody2}</p>
@@ -297,7 +297,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div {...fadeUp()} className="mb-16 text-center">
                         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">How It Works</p>
-                        <h2 id="process-heading" className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">Your journey to better practice</h2>
+                        <h2 id="process-heading" className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">Referring a package is straightforward</h2>
                     </motion.div>
                     <div className="relative">
                         <div aria-hidden className="absolute top-10 left-[12.5%] hidden h-0.5 w-3/4 bg-gradient-to-r from-brand-100 via-brand-300 to-brand-100 lg:block" />
@@ -316,8 +316,8 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                     </div>
                     <motion.div {...fadeUp(0.3)} className="mt-14 text-center">
                         <Button asChild size="lg" className="group bg-brand-600 font-semibold text-white shadow-lg hover:bg-brand-700 active:scale-95 transition-all duration-200">
-                            <Link href="/courses">
-                                Start Your Journey
+                            <Link href="/contact">
+                                Refer a Package
                                 <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </Button>
@@ -339,7 +339,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                             </h2>
                             <p className="mb-6 text-base leading-relaxed text-gray-600">{contactSubtext}</p>
                             <ul className="mb-8 space-y-3">
-                                {['No obligation — just a conversation', 'Tailored advice for your specific needs', 'Flexible scheduling across UK venues', 'Group and individual bookings available'].map((item) => (
+                                {['No obligation — just a conversation', 'Nurse-led assessment and care planning', 'Packages accepted across the UK', 'ICB, NHS, local authority and self-funded referrals welcome'].map((item) => (
                                     <li key={item} className="flex items-center gap-3 text-sm text-gray-700">
                                         <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100">
                                             <CheckCircle className="size-3 text-brand-600" />
@@ -354,7 +354,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                                 </div>
                                 <div>
                                     <div className="text-xs text-gray-400">Prefer to call?</div>
-                                    <a href={`tel:${sitePhone.replace(/\s/g, '')}`} className="text-sm font-bold text-gray-900 transition-colors hover:text-brand-700">{sitePhone}</a>
+                                    <a href="tel:01913804370" className="text-sm font-bold text-gray-900 transition-colors hover:text-brand-700">0191 380 4370</a>
                                 </div>
                             </div>
                         </motion.div>
@@ -370,11 +370,11 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
             <div className="border-t border-gray-100 bg-gray-50 py-6">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
-                        <span className="flex items-center gap-1.5"><MapPin className="size-4 text-brand-500" aria-hidden />Nationwide UK Delivery</span>
+                        <span className="flex items-center gap-1.5"><MapPin className="size-4 text-brand-500" aria-hidden />Meadowfield, Durham</span>
                         <span aria-hidden className="h-4 w-px bg-gray-200" />
-                        <span className="flex items-center gap-1.5"><ShieldCheck className="size-4 text-brand-500" aria-hidden />CPD Accredited Programmes</span>
+                        <span className="flex items-center gap-1.5"><ShieldCheck className="size-4 text-brand-500" aria-hidden />CQC-Rated GOOD</span>
                         <span aria-hidden className="h-4 w-px bg-gray-200" />
-                        <span className="flex items-center gap-1.5"><Award className="size-4 text-brand-500" aria-hidden />Nurse-Led Training</span>
+                        <span className="flex items-center gap-1.5"><Award className="size-4 text-brand-500" aria-hidden />Nurse-Led Care</span>
                     </div>
                 </div>
             </div>

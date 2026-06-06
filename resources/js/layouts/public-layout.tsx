@@ -25,49 +25,49 @@ import type { Auth } from '@/types';
 
 // ─── Nav data ─────────────────────────────────────────────────────────────────
 
-const coursesMenu = [
+const servicesMenu = [
     {
         icon: HeartPulse,
-        label: 'Paediatric Complex Care',
-        desc: '3-day intensive clinical programme',
-        href: '/courses/paediatric-complex-care-3-day',
+        label: 'Complex & Clinical Care',
+        desc: 'Tracheostomy, ventilation, enteral feeding & more',
+        href: '/contact',
     },
     {
         icon: Brain,
-        label: 'Neurological Conditions',
-        desc: 'Brain injury & epilepsy management',
-        href: '/courses',
+        label: 'Mental Health & LD Support',
+        desc: 'Mental health, learning disability & autism',
+        href: '/contact',
+    },
+    {
+        icon: Users,
+        label: 'Domiciliary & Respite Care',
+        desc: 'Flexible care for adults and young people',
+        href: '/contact',
     },
     {
         icon: Stethoscope,
-        label: 'Respiratory & Airway',
-        desc: 'Tracheostomy & ventilator care',
+        label: 'Clinical Training',
+        desc: 'CPD-accredited complex care programmes',
         href: '/courses',
     },
     {
         icon: ClipboardList,
-        label: 'Enteral Feeding',
-        desc: 'NG, NJ & gastrostomy management',
-        href: '/courses',
-    },
-    {
-        icon: Users,
-        label: 'Family-Centred Care',
-        desc: 'Partnership & communication skills',
-        href: '/courses',
+        label: 'Business Consultancy',
+        desc: 'CQC compliance & care quality improvement',
+        href: '/contact',
     },
     {
         icon: ShieldCheck,
-        label: 'Safeguarding',
-        desc: 'Complex needs safeguarding training',
-        href: '/courses',
+        label: 'ICB & NHS Partnerships',
+        desc: 'Accepting new packages from commissioners',
+        href: '/contact',
     },
 ];
 
 const aboutMenu = [
-    { icon: GraduationCap, label: 'Our Story',       desc: 'Who we are and our mission',          href: '/about' },
-    { icon: Award,         label: 'Accreditation',   desc: 'CPD & regulatory compliance',         href: '/about' },
-    { icon: BookOpen,      label: 'Our Approach',    desc: 'How we design our programmes',        href: '/about' },
+    { icon: GraduationCap, label: 'About MMAB',        desc: 'Our story, values & CQC rating',      href: '/about' },
+    { icon: Award,         label: 'CQC & Compliance',  desc: 'Rated GOOD — what that means for you', href: '/about' },
+    { icon: BookOpen,      label: 'Our Approach',       desc: 'Nurse-led, person-centred care',       href: '/about' },
 ];
 
 // ─── Dropdown component ───────────────────────────────────────────────────────
@@ -153,11 +153,11 @@ function NavDropdown({
                         {/* Footer strip */}
                         <div className="border-t border-gray-50 bg-gray-50/80 px-4 py-2.5">
                             <Link
-                                href="/courses"
+                                href="/contact"
                                 onClick={() => setOpen(false)}
                                 className="text-xs font-semibold text-brand-600 hover:text-brand-700 transition-colors"
                             >
-                                View all courses →
+                                Get in touch →
                             </Link>
                         </div>
                     </motion.div>
@@ -196,11 +196,11 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs sm:px-6 lg:px-8">
                     <div className="flex items-center gap-5">
                         <a
-                            href="tel:+440000000000"
+                            href="tel:01913804370"
                             className="flex items-center gap-1.5 transition-colors hover:text-brand-200"
                         >
                             <Phone className="size-3" />
-                            +44 (0) 000 000 0000
+                            0191 380 4370
                         </a>
                         <a
                             href="mailto:info@mmabconsulting.com"
@@ -259,10 +259,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         />
                         <div className="hidden border-l border-gray-200 pl-3 sm:block">
                             <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-600">
-                                Healthcare Training
+                                Home Care
                             </div>
                             <div className="text-[9px] font-medium text-gray-400">
-                                Paediatric Complex Care
+                                CQC-Rated GOOD
                             </div>
                         </div>
                     </Link>
@@ -277,8 +277,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             Home
                         </Link>
 
-                        {/* Courses mega-dropdown */}
-                        <NavDropdown label="Courses" items={coursesMenu} cols={2} />
+                        {/* Services mega-dropdown */}
+                        <NavDropdown label="Services" items={servicesMenu} cols={2} />
 
                         {/* About dropdown */}
                         <NavDropdown label="About Us" items={aboutMenu} cols={1} />
@@ -294,17 +294,17 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     {/* Desktop right actions */}
                     <div className="hidden items-center gap-2 lg:flex">
                         <a
-                            href="tel:+440000000000"
+                            href="tel:01913804370"
                             className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
                         >
                             <Phone className="size-4" />
-                            Call Us
+                            0191 380 4370
                         </a>
                         <Link
-                            href="/courses"
+                            href="/contact"
                             className="rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-brand-300/30 transition-all duration-200 hover:from-brand-700 hover:to-brand-600 hover:shadow-lg active:scale-95"
                         >
-                            Apply Now
+                            Refer a Package
                         </Link>
                     </div>
 
@@ -351,10 +351,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     />
                                     <div className="border-l border-gray-200 pl-2.5">
                                         <div className="text-[10px] font-semibold uppercase tracking-widest text-brand-600">
-                                            Healthcare Training
+                                            Home Care
                                         </div>
                                         <div className="text-[9px] text-gray-400">
-                                            Paediatric Complex Care
+                                            CQC-Rated GOOD
                                         </div>
                                     </div>
                                 </div>
@@ -377,13 +377,13 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     Home
                                 </Link>
 
-                                {/* Courses accordion */}
+                                {/* Services accordion */}
                                 <div>
                                     <button
                                         onClick={() => setMobileCoursesOpen((v) => !v)}
                                         className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-gray-800 transition-colors hover:bg-brand-50 hover:text-brand-700"
                                     >
-                                        Courses
+                                        Services
                                         <ChevronDown
                                             className={`size-4 transition-transform duration-200 ${mobileCoursesOpen ? 'rotate-180 text-brand-600' : 'text-gray-400'}`}
                                         />
@@ -398,7 +398,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                                 className="overflow-hidden"
                                             >
                                                 <div className="ml-3 mt-1 space-y-0.5 border-l-2 border-brand-100 pl-3">
-                                                    {coursesMenu.map((item) => (
+                                                    {servicesMenu.map((item) => (
                                                         <Link
                                                             key={item.label}
                                                             href={item.href}
@@ -463,18 +463,18 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     </div>
                                 )}
                                 <Link
-                                    href="/courses"
+                                    href="/contact"
                                     onClick={() => setMobileOpen(false)}
                                     className="flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 py-3 text-sm font-bold text-white shadow-md transition-all hover:from-brand-700 hover:to-brand-600"
                                 >
-                                    Apply Now
+                                    Refer a Package
                                 </Link>
                                 <a
-                                    href="tel:+440000000000"
+                                    href="tel:01913804370"
                                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-gray-50 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-100"
                                 >
                                     <Phone className="size-4 text-brand-600" />
-                                    +44 (0) 000 000 0000
+                                    0191 380 4370
                                 </a>
                             </div>
                         </motion.div>
@@ -494,26 +494,27 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             <div className="mb-5 flex items-center gap-3">
                                 <img
                                     src="/images/logo.webp"
-                                    alt="MMAB Consulting"
+                                    alt="MMAB Home Care"
                                     className="h-10 w-auto object-contain brightness-0 invert"
                                 />
                                 <div className="border-l border-white/20 pl-3">
                                     <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-300">
-                                        Healthcare Training
+                                        Home Care
                                     </div>
                                     <div className="text-[9px] text-gray-500">
-                                        Paediatric Complex Care
+                                        CQC-Rated GOOD
                                     </div>
                                 </div>
                             </div>
                             <p className="mb-5 max-w-sm text-sm leading-relaxed">
-                                Specialist clinical training for healthcare professionals working with children and
-                                young people with complex care needs across the UK.
+                                Nurse-led home care provider rated GOOD by the CQC. Serving North and South East
+                                England with complex clinical care, mental health and LD support, and domiciliary
+                                care for adults and young people. <em>We Care.</em>
                             </p>
                             <div className="space-y-2 text-sm">
-                                <a href="tel:+440000000000" className="flex items-center gap-2 transition-colors hover:text-brand-400">
+                                <a href="tel:01913804370" className="flex items-center gap-2 transition-colors hover:text-brand-400">
                                     <Phone className="size-3.5 text-brand-500" />
-                                    +44 (0) 000 000 0000
+                                    0191 380 4370
                                 </a>
                                 <a href="mailto:info@mmabconsulting.com" className="flex items-center gap-2 transition-colors hover:text-brand-400">
                                     <Mail className="size-3.5 text-brand-500" />
@@ -529,12 +530,12 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             </h3>
                             <ul className="space-y-2.5 text-sm">
                                 {[
-                                    { label: 'Home', href: home() },
-                                    { label: 'Courses', href: '/courses' },
-                                    { label: 'About Us', href: about() },
+                                    { label: 'Home',       href: home() },
+                                    { label: 'Services',   href: '/contact' },
+                                    { label: 'About Us',   href: about() },
                                     { label: 'Contact Us', href: contact() },
                                 ].map((link) => (
-                                    <li key={link.href}>
+                                    <li key={link.label}>
                                         <Link href={link.href} className="transition-colors hover:text-brand-400">
                                             {link.label}
                                         </Link>
@@ -543,33 +544,35 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             </ul>
                         </div>
 
-                        {/* Training */}
+                        {/* Services */}
                         <div>
                             <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white">
-                                Training
+                                Our Services
                             </h3>
                             <ul className="space-y-2.5 text-sm">
                                 <li>
+                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                        Complex &amp; Clinical Care
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                        Mental Health &amp; LD Support
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                        Domiciliary &amp; Respite Care
+                                    </Link>
+                                </li>
+                                <li>
                                     <Link href="/courses" className="transition-colors hover:text-brand-400">
-                                        All Courses
+                                        Clinical Training
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/courses/paediatric-complex-care-3-day"
-                                        className="transition-colors hover:text-brand-400"
-                                    >
-                                        Paediatric Complex Care
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href={register()} className="transition-colors hover:text-brand-400">
-                                        Register
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link href={login()} className="transition-colors hover:text-brand-400">
-                                        Log In
+                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                        Business Consultancy
                                     </Link>
                                 </li>
                             </ul>
@@ -577,7 +580,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     </div>
 
                     <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-gray-800 pt-8 text-xs sm:flex-row">
-                        <span>© {new Date().getFullYear()} MMAB Consulting. All rights reserved.</span>
+                        <span>© {new Date().getFullYear()} MMAB Home Care. All rights reserved.</span>
                         <div className="flex gap-5">
                             <Link href="/contact" className="transition-colors hover:text-brand-400">
                                 Privacy Policy
