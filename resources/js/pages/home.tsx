@@ -234,7 +234,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
             </section>
 
             {/* ── 5. VIDEO ── */}
-            <VideoSection src="/videos/difference.mp4" title={videoTitle} subtitle={videoSubtitle} />
+            <VideoSection youtubeId={heroYoutubeId} title={videoTitle} subtitle={videoSubtitle} />
 
             {/* ── 6. CASE STUDIES ── */}
             <section className="py-24" aria-labelledby="case-studies-heading">

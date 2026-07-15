@@ -6,11 +6,14 @@ import {
     Brain,
     ChevronDown,
     ClipboardList,
+    Facebook,
     GraduationCap,
     HeartPulse,
     LayoutDashboard,
+    Linkedin,
     LogIn,
     Mail,
+    MapPin,
     Menu,
     Phone,
     ShieldCheck,
@@ -64,11 +67,7 @@ const servicesMenu = [
     },
 ];
 
-const aboutMenu = [
-    { icon: GraduationCap, label: 'About MMAB',        desc: 'Our story, values & CQC rating',      href: '/about' },
-    { icon: Award,         label: 'CQC & Compliance',  desc: 'Rated GOOD — what that means for you', href: '/about' },
-    { icon: BookOpen,      label: 'Our Approach',       desc: 'Nurse-led, person-centred care',       href: '/about' },
-];
+const aboutMenu = null; // removed — About Us is a direct link
 
 // ─── Dropdown component ───────────────────────────────────────────────────────
 
@@ -280,8 +279,13 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         {/* Services mega-dropdown */}
                         <NavDropdown label="Services" items={servicesMenu} cols={2} />
 
-                        {/* About dropdown */}
-                        <NavDropdown label="About Us" items={aboutMenu} cols={1} />
+                        {/* About link */}
+                        <Link
+                            href={about()}
+                            className="flex items-center border-b-2 border-transparent px-4 py-5 text-sm font-semibold text-gray-700 transition-colors hover:border-brand-500 hover:text-brand-700"
+                        >
+                            About Us
+                        </Link>
 
                         <Link
                             href={contact()}
@@ -511,14 +515,43 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                 England with complex clinical care, mental health and LD support, and domiciliary
                                 care for adults and young people. <em>We Care.</em>
                             </p>
-                            <div className="space-y-2 text-sm">
+                            <div className="mb-5 space-y-2 text-sm">
                                 <a href="tel:01913804370" className="flex items-center gap-2 transition-colors hover:text-brand-400">
-                                    <Phone className="size-3.5 text-brand-500" />
+                                    <Phone className="size-3.5 shrink-0 text-brand-500" />
                                     0191 380 4370
                                 </a>
                                 <a href="mailto:info@mmabconsulting.com" className="flex items-center gap-2 transition-colors hover:text-brand-400">
-                                    <Mail className="size-3.5 text-brand-500" />
+                                    <Mail className="size-3.5 shrink-0 text-brand-500" />
                                     info@mmabconsulting.com
+                                </a>
+                                <div className="flex items-start gap-2 text-gray-500">
+                                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand-500" />
+                                    <span>Victoria House, Whitfield Court, St John's Road, Meadowfield, Durham DH7 8XL</span>
+                                </div>
+                                <div className="flex items-start gap-2 text-gray-500">
+                                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand-500" />
+                                    <span>32 Avondale Road, London N13 4DU</span>
+                                </div>
+                            </div>
+                            {/* Social links */}
+                            <div className="flex items-center gap-3">
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=61577224052022"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="MMAB on Facebook"
+                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-brand-600 hover:text-white"
+                                >
+                                    <Facebook className="size-4" />
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/company/mmab-health-care/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="MMAB on LinkedIn"
+                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-brand-600 hover:text-white"
+                                >
+                                    <Linkedin className="size-4" />
                                 </a>
                             </div>
                         </div>
@@ -579,7 +612,36 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         </div>
                     </div>
 
-                    <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-gray-800 pt-8 text-xs sm:flex-row">
+                    {/* ── CQC Widget ── */}
+                    <div className="mt-12 border-t border-gray-800 pt-10">
+                        <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-10">
+                            {/* Official CQC embed */}
+                            <div className="shrink-0">
+                                <div
+                                    id="cqc-widget"
+                                    data-id="1-15528561702"
+                                    data-host="https://api.cqc.org.uk/public/v1/locations/1-15528561702"
+                                />
+                                <script
+                                    defer
+                                    src="https://www.cqc.org.uk/sites/all/modules/custom/cqc_widget/widget.js"
+                                />
+                            </div>
+                            <p className="max-w-xs text-xs leading-relaxed text-gray-500">
+                                MMAB Healthcare is inspected and regulated by the Care Quality Commission — the independent regulator of health and social care in England.{' '}
+                                <a
+                                    href="https://www.cqc.org.uk/location/1-15528561702"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-brand-400 underline underline-offset-2 hover:text-brand-300"
+                                >
+                                    View our CQC report
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-gray-800 pt-8 text-xs sm:flex-row">
                         <span>© {new Date().getFullYear()} MMAB Home Care. All rights reserved.</span>
                         <div className="flex gap-5">
                             <Link href="/contact" className="transition-colors hover:text-brand-400">

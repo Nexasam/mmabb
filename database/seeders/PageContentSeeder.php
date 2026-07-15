@@ -15,7 +15,7 @@ class PageContentSeeder extends Seeder
             ['page' => 'home', 'key' => 'hero.subtext',    'label' => 'Hero — Subtext',           'type' => 'textarea', 'value' => 'MMAB Home Care is a CQC-rated Good, nurse-led provider serving North and South East England. We deliver complex clinical care, learning disability and autism support, mental health care, and domiciliary services — so people can live well in the comfort of their own homes.'],
             ['page' => 'home', 'key' => 'hero.cta_label',  'label' => 'Hero — CTA Button Label', 'type' => 'text',     'value' => 'Enquire About Care'],
             ['page' => 'home', 'key' => 'hero.cta_href',   'label' => 'Hero — CTA Button Link',  'type' => 'text',     'value' => '/contact'],
-            ['page' => 'home', 'key' => 'hero.youtube_id', 'label' => 'Hero — YouTube Video ID', 'type' => 'text',     'value' => 'dQw4w9WgXcQ'],
+            ['page' => 'home', 'key' => 'hero.youtube_id', 'label' => 'Hero — YouTube Video ID', 'type' => 'text',     'value' => ''],
 
             // ── Stats bar ─────────────────────────────────────────────────────
             ['page' => 'home', 'key' => 'stats', 'label' => 'Stats Bar (JSON array)', 'type' => 'json', 'value' => json_encode([

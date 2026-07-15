@@ -1,5 +1,5 @@
 import { Head, Link, useForm } from '@inertiajs/react';
-import { ArrowRight, Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, Clock, Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import InputError from '@/components/input-error';
 import { Spinner } from '@/components/ui/spinner';
 import { Input } from '@/components/ui/input';
@@ -51,7 +51,8 @@ export default function Contact() {
                         {[
                             { icon: Phone,  label: 'Call Us',   value: '0191 380 4370',            sub: 'Mon–Fri, 9am–5pm'                    },
                             { icon: Mail,   label: 'Email Us',  value: 'info@mmabconsulting.com',  sub: 'We respond within 24 hours'          },
-                            { icon: MapPin, label: 'Location',  value: 'Meadowfield, Durham',       sub: 'North & South East England'          },
+                            { icon: MapPin, label: 'Durham',    value: 'Meadowfield, Durham',       sub: 'Victoria House, DH7 8XL'             },
+                            { icon: MapPin, label: 'London',    value: '32 Avondale Road',          sub: 'London, N13 4DU'                     },
                         ].map((item) => (
                             <div key={item.label} className="flex items-start gap-4 rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
                                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-50">
@@ -102,6 +103,31 @@ export default function Contact() {
                                 <Link href="/courses" className="text-sm font-semibold text-brand-600 hover:text-brand-700">
                                     Browse Training Courses →
                                 </Link>
+                            </div>
+
+                            {/* Social links */}
+                            <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
+                                <h3 className="mb-3 font-bold text-gray-900">Follow Us</h3>
+                                <div className="flex gap-3">
+                                    <a
+                                        href="https://www.facebook.com/profile.php?id=61577224052022"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 rounded-lg border border-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
+                                    >
+                                        <Facebook className="size-4 text-brand-600" />
+                                        Facebook
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/company/mmab-health-care/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 rounded-lg border border-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-700 transition-colors hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"
+                                    >
+                                        <Linkedin className="size-4 text-brand-600" />
+                                        LinkedIn
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
