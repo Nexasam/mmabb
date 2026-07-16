@@ -1,3 +1,7 @@
+/* ── Poppins + Inter + Kalam from Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap');
+
+
 @import 'tailwindcss';
 
 @import 'tw-animate-css';
@@ -216,8 +220,6 @@
     background-color: #f4f3fb;
 }
 
-/* ── Poppins + Inter + Kalam from Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap');
 
 /* ── Animation utilities ── */
 @keyframes float {

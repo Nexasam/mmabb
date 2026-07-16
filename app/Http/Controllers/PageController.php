@@ -13,6 +13,7 @@ class PageController extends Controller
      */
     public function home(): Response
     {
+        // dd('sdfsdf');
         $content = PageContent::forPage('home');
         $global = PageContent::forPage('global');
 
