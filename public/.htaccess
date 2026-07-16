@@ -23,3 +23,14 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# Block access to sensitive files
+<FilesMatch "\.(env|log|sqlite|sql|lock|json|md|phar|sh|bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# PHP 8.3 for GoDaddy shared hosting
+<IfModule mime.c>
+    AddHandler application/x-httpd-ea-php83 .php
+</IfModule>
