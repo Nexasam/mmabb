@@ -26,6 +26,8 @@ import { useEffect, useRef, useState } from 'react';
 import { about, contact, dashboard, home, login, register } from '@/routes';
 import type { Auth } from '@/types';
 
+import { CqcWidget } from '@/components/cqc-widget';
+
 // ─── Nav data ─────────────────────────────────────────────────────────────────
 
 const servicesMenu = [
@@ -253,7 +255,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     <Link href={home()} className="flex items-center gap-3 py-3.5">
                         <img
                             src="/images/logo.webp"
-                            alt="MMAB Consulting"
+                            alt="MMAB Healthcare"
                             className="h-12 w-auto object-contain"
                         />
                         <div className="hidden border-l border-gray-200 pl-3 sm:block">
@@ -285,6 +287,13 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             className="flex items-center border-b-2 border-transparent px-4 py-5 text-sm font-semibold text-gray-700 transition-colors hover:border-brand-500 hover:text-brand-700"
                         >
                             About Us
+                        </Link>
+
+                        <Link
+                            href="/training"
+                            className="flex items-center border-b-2 border-transparent px-4 py-5 text-sm font-semibold text-gray-700 transition-colors hover:border-brand-500 hover:text-brand-700"
+                        >
+                            Training
                         </Link>
 
                         <Link
@@ -350,7 +359,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                 <div className="flex items-center gap-2.5">
                                     <img
                                         src="/images/logo.webp"
-                                        alt="MMAB Consulting"
+                                        alt="MMAB Healthcare"
                                         className="h-9 w-auto object-contain"
                                     />
                                     <div className="border-l border-gray-200 pl-2.5">
@@ -427,6 +436,13 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     About Us
                                 </Link>
                                 <Link
+                                    href="/training"
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex items-center rounded-xl px-4 py-3 text-sm font-semibold text-gray-800 transition-colors hover:bg-brand-50 hover:text-brand-700"
+                                >
+                                    Training
+                                </Link>
+                                <Link
                                     href={contact()}
                                     onClick={() => setMobileOpen(false)}
                                     className="flex items-center rounded-xl px-4 py-3 text-sm font-semibold text-gray-800 transition-colors hover:bg-brand-50 hover:text-brand-700"
@@ -498,7 +514,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                             <div className="mb-5 flex items-center gap-3">
                                 <img
                                     src="/images/logo.webp"
-                                    alt="MMAB Home Care"
+                                    alt="MMAB Healthcare"
                                     className="h-10 w-auto object-contain brightness-0 invert"
                                 />
                                 <div className="border-l border-white/20 pl-3">
@@ -566,6 +582,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     { label: 'Home',       href: home() },
                                     { label: 'Services',   href: '/contact' },
                                     { label: 'About Us',   href: about() },
+                                    { label: 'Training',   href: '/training' },
                                     { label: 'Contact Us', href: contact() },
                                 ].map((link) => (
                                     <li key={link.label}>
@@ -615,17 +632,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     {/* ── CQC Widget ── */}
                     <div className="mt-12 border-t border-gray-800 pt-10">
                         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-10">
-                            {/* Official CQC embed */}
+                            {/* Official CQC widget component */}
                             <div className="shrink-0">
-                                <div
-                                    id="cqc-widget"
-                                    data-id="1-15528561702"
-                                    data-host="https://api.cqc.org.uk/public/v1/locations/1-15528561702"
-                                />
-                                <script
-                                    defer
-                                    src="https://www.cqc.org.uk/sites/all/modules/custom/cqc_widget/widget.js"
-                                />
+                                <CqcWidget />
                             </div>
                             <p className="max-w-xs text-xs leading-relaxed text-gray-500">
                                 MMAB Healthcare is inspected and regulated by the Care Quality Commission — the independent regulator of health and social care in England.{' '}
@@ -642,7 +651,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     </div>
 
                     <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-gray-800 pt-8 text-xs sm:flex-row">
-                        <span>© {new Date().getFullYear()} MMAB Home Care. All rights reserved.</span>
+                        <span>© {new Date().getFullYear()} MMAB Healthcare. All rights reserved.</span>
                         <div className="flex gap-5">
                             <Link href="/contact" className="transition-colors hover:text-brand-400">
                                 Privacy Policy

@@ -82,7 +82,7 @@ function parseJson<T>(raw: string | undefined, fallback: T): T {
 
 export default function Home({ cms = {} }: { cms?: Cms }) {
     const heroHeadline   = cms['hero.headline']   ?? "Specialist Care\nAt Home";
-    const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Home Care is a CQC-rated Good, nurse-led provider serving North and South East England. We deliver complex clinical care, learning disability and autism support, mental health care, and domiciliary services — so people can live well in the comfort of their own homes.';
+    const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Healthcare is a CQC-rated Good, nurse-led provider serving North and South East England. We deliver complex clinical care, learning disability and autism support, mental health care, and domiciliary services — so people can live well in the comfort of their own homes.';
     const heroCtaLabel   = cms['hero.cta_label']  ?? 'Enquire About Care';
     const heroCtaHref    = cms['hero.cta_href']   ?? '/contact';
     const heroYoutubeId  = cms['hero.youtube_id'] ?? 'dQw4w9WgXcQ';
@@ -107,13 +107,13 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
     const testimonialsItems    = parseJson<{ quote: string; name: string; role: string; rating: number }[]>(cms['testimonials.items'], defaultTestimonials);
 
     const videoTitle    = cms['video.title']    ?? 'Care that makes a real difference';
-    const videoSubtitle = cms['video.subtitle'] ?? 'See how MMAB Home Care supports adults and young people to live safely and independently in North and South East England.';
+    const videoSubtitle = cms['video.subtitle'] ?? 'See how MMAB Healthcare supports adults and young people to live safely and independently in North and South East England.';
 
     const casesHeadline = cms['cases.headline'] ?? 'Real people. Real outcomes.';
     const casesItems    = parseJson<{ tag: string; title: string; story: string; outcome: string }[]>(cms['cases.items'], defaultCases);
 
     const aboutHeadline = cms['about.headline'] ?? 'Trusted care, close to home.';
-    const aboutBody1    = cms['about.body1']    ?? 'MMAB Home Care is a nurse-led provider rated Good by the CQC, serving North and South East England. We support adults and young people with complex clinical needs, learning disabilities, autism, mental health conditions, and everyday care needs — so they can live well in the place they call home.';
+    const aboutBody1    = cms['about.body1']    ?? 'MMAB Healthcare is a nurse-led provider rated Good by the CQC, serving North and South East England. We support adults and young people with complex clinical needs, learning disabilities, autism, mental health conditions, and everyday care needs — so they can live well in the place they call home.';
     const aboutBody2    = cms['about.body2']    ?? 'Led by Rosemary Lanlehin — a registered nurse with over 30 years of clinical and academic experience — our team brings exceptional depth to every care package. We work closely with ICBs, NHS teams, and local authorities, and we are currently accepting new packages.';
     const aboutStats    = parseJson<{ value: string; label: string }[]>(cms['about.stats'], [
         { value: 'Good',       label: 'CQC Rating'          },
@@ -132,7 +132,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
 
     return (
         <>
-            <Head title="Nurse-Led Home Care | CQC-Rated GOOD | MMAB Home Care" />
+            <Head title="Nurse-Led Home Care | CQC-Rated GOOD | MMAB Healthcare" />
 
             {/* ── 1. HERO ── */}
             <HeroSection
@@ -196,7 +196,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                             </h2>
                             <p className="mb-6 text-base leading-relaxed text-gray-600">{whySubtext}</p>
                             <Button asChild className="group bg-brand-600 font-semibold text-white hover:bg-brand-700 active:scale-95 transition-all duration-200">
-                                <Link href="/about">About MMAB Home Care <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" /></Link>
+                                <Link href="/about">About MMAB Healthcare <ArrowRight className="ml-1.5 size-4 transition-transform group-hover:translate-x-1" /></Link>
                             </Button>
                         </motion.div>
                         <div className="grid gap-4 sm:grid-cols-2">
@@ -270,7 +270,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 shadow-2xl lg:flex">
                         <motion.div {...fadeUp()} className="flex flex-col justify-center p-10 text-white lg:w-3/5 lg:p-14">
-                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-200">About MMAB Home Care</p>
+                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-200">About MMAB Healthcare</p>
                             <h2 id="about-heading" className="mb-4 font-heading text-3xl font-extrabold leading-tight lg:text-4xl">{aboutHeadline}</h2>
                             <p className="mb-4 leading-relaxed text-brand-100">{aboutBody1}</p>
                             <p className="mb-6 leading-relaxed text-brand-100">{aboutBody2}</p>

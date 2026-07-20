@@ -37,4 +37,12 @@ class PageController extends Controller
     {
         return Inertia::render('contact');
     }
+
+    /**
+     * Show the training page.
+     */
+    public function training(): Response
+    {
+        return Inertia::render('training');
+    }
 }

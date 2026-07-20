@@ -185,7 +185,7 @@ export function HeroSection({
                                 loop
                                 playsInline
                                 className="h-full w-full object-cover object-center"
-                                aria-label="Healthcare professionals in a training session"
+                                aria-label="A caregiver warmly supporting a child with complex care needs at home"
                             />
                         </div>
                     </motion.div>

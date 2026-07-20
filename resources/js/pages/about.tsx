@@ -37,7 +37,7 @@ const trainingTopics = [
 export default function About() {
     return (
         <>
-            <Head title="About Us | MMAB Home Care" />
+            <Head title="About Us | MMAB Healthcare" />
 
             {/* ── Hero ─────────────────────────────────────────────────────── */}
             <section className="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 pb-0 pt-20">
@@ -48,7 +48,7 @@ export default function About() {
                             About Us
                         </span>
                         <h1 className="mb-4 font-heading text-4xl font-extrabold leading-tight text-white lg:text-5xl">
-                            About MMAB Home Care
+                            About MMAB Healthcare
                         </h1>
                         <p className="text-lg leading-relaxed text-brand-100">
                             A CQC-rated GOOD, nurse-led home care provider delivering complex clinical care, mental
@@ -76,7 +76,7 @@ export default function About() {
                                 Leaders in complex and clinical home care
                             </h2>
                             <p className="mb-4 leading-relaxed text-gray-600">
-                                MMAB Home Care is a trusted, nurse-led provider serving North and South East England.
+                                MMAB Healthcare is a trusted, nurse-led provider serving North and South East England.
                                 Rated GOOD by the CQC, our most recent inspection noted: <em>"Management led by example,
                                 with a strong focus on values and staff support."</em> We are dedicated to delivering
                                 high-quality, personalised care and support to individuals in the comfort of their own homes.
@@ -149,7 +149,7 @@ export default function About() {
                                         Rosemary Lanlehin
                                     </h3>
                                     <p className="text-sm font-semibold text-brand-600">
-                                        Responsible Individual &amp; Registered Manager — MMAB Consulting Ltd
+                                        Responsible Individual &amp; Registered Manager — MMAB Healthcare
                                     </p>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@ export default function About() {
                                     <p className="leading-relaxed text-gray-600">
                                         As a widely published researcher and Fellow of the Royal College of Nursing and
                                         Royal Society of Medicine, Rosemary brings an unparalleled depth of clinical
-                                        knowledge to the governance and strategic leadership of MMAB Home Care.
+                                        knowledge to the governance and strategic leadership of MMAB Healthcare.
                                     </p>
                                 </div>
 
@@ -318,7 +318,7 @@ export default function About() {
             {/* ── CTA ──────────────────────────────────────────────────────── */}
             <section className="bg-brand-700 py-16 text-white">
                 <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-                    <h2 className="mb-3 text-2xl font-extrabold lg:text-3xl">Work with MMAB Home Care</h2>
+                    <h2 className="mb-3 text-2xl font-extrabold lg:text-3xl">Work with MMAB Healthcare</h2>
                     <p className="mb-8 text-brand-100">
                         We are currently accepting new packages and are keen to support your team. Get in touch
                         to discuss a referral or find out more about our services.

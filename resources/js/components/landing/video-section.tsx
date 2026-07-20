@@ -11,7 +11,7 @@ type VideoSectionProps = {
 export function VideoSection({
     youtubeId,
     title = 'Care that makes a real difference',
-    subtitle = 'See how MMAB Home Care supports adults and young people to live safely and independently.',
+    subtitle = 'See how MMAB Healthcare supports adults and young people to live safely and independently.',
 }: VideoSectionProps) {
     return (
         <section

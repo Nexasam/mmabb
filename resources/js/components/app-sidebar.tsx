@@ -82,10 +82,10 @@ export function AppSidebar() {
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-sm font-semibold text-slate-900">
-                                        MMAB Consulting
+                                        MMAB Healthcare
                                     </span>
                                     <span className="text-xs text-slate-500">
-                                        Healthcare Training
+                                        Clinical Training
                                     </span>
                                 </div>
                             </Link>
