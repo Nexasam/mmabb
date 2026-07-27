@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminEnquiryController;
 use App\Http\Controllers\Admin\AdminMaterialController;
 use App\Http\Controllers\Admin\AdminPageContentController;
 use App\Http\Controllers\Admin\AdminSurveyLinkController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\CourseController;
@@ -98,6 +99,10 @@ Route::middleware(['auth', 'verified', EnsureUserIsAdmin::class])
         Route::get('/enquiries', [AdminEnquiryController::class, 'index'])->name('enquiries.index');
         Route::patch('/enquiries/{enquiry}/read', [AdminEnquiryController::class, 'markRead'])->name('enquiries.read');
         Route::delete('/enquiries/{enquiry}', [AdminEnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
+        // Users
+        Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->name('users.destroy');
     });
 
 require __DIR__.'/settings.php';

@@ -2,12 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['page', 'key', 'label', 'type', 'value'])]
 class PageContent extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'page',
+        'key',
+        'label',
+        'type',
+        'value',
+    ];
     /**
      * Get a single content value by key, with an optional fallback.
      */

@@ -3,22 +3,27 @@
 namespace App\Models;
 
 use Database\Factories\SurveyLinkFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-#[Fillable([
-    'title',
-    'description',
-    'url',
-    'token',
-    'is_active',
-])]
 class SurveyLink extends Model
 {
     /** @use HasFactory<SurveyLinkFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'title',
+        'description',
+        'url',
+        'token',
+        'is_active',
+    ];
 
     protected function casts(): array
     {

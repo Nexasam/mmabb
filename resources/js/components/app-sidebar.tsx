@@ -10,6 +10,7 @@ import {
     MessageSquare,
     QrCode,
     Settings2,
+    Users,
     Users2,
 } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
@@ -56,6 +57,7 @@ export function AppSidebar() {
               { title: 'Enquiries',    href: '/admin/enquiries',    icon: MessageSquare },
               { title: 'Survey QR',    href: '/admin/survey-links', icon: QrCode        },
               { title: 'Landing Page', href: '/admin/page-content', icon: LayoutTemplate },
+              { title: 'Users',        href: '/admin/users',        icon: Users         },
           ]
         : [];
 

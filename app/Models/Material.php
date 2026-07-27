@@ -3,23 +3,28 @@
 namespace App\Models;
 
 use Database\Factories\MaterialFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable([
-    'course_id',
-    'title',
-    'file_path',
-    'file_name',
-    'file_size',
-    'sort_order',
-])]
 class Material extends Model
 {
     /** @use HasFactory<MaterialFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'course_id',
+        'title',
+        'file_path',
+        'file_name',
+        'file_size',
+        'sort_order',
+    ];
 
     /**
      * Get the course this material belongs to.

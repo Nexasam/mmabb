@@ -85,7 +85,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
     const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Healthcare is a CQC-rated Good, nurse-led provider serving North and South East England. We deliver complex clinical care, learning disability and autism support, mental health care, and domiciliary services — so people can live well in the comfort of their own homes.';
     const heroCtaLabel   = cms['hero.cta_label']  ?? 'Enquire About Care';
     const heroCtaHref    = cms['hero.cta_href']   ?? '/contact';
-    const heroYoutubeId  = cms['hero.youtube_id'] ?? 'dQw4w9WgXcQ';
+    const heroYoutubeId  = cms['hero.youtube_id'] ?? 'xwLc_gswIww';
 
     const statsItems     = parseJson<{ value: string; label: string }[]>(cms['stats'], [
         { value: 'Good',       label: 'CQC Rating'        },

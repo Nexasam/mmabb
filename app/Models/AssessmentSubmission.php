@@ -3,26 +3,31 @@
 namespace App\Models;
 
 use Database\Factories\AssessmentSubmissionFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable([
-    'assessment_id',
-    'user_id',
-    'answers',
-    'question_marks',
-    'submitted_at',
-    'started_at',
-    'score',
-    'marker_notes',
-    'marked_at',
-])]
 class AssessmentSubmission extends Model
 {
     /** @use HasFactory<AssessmentSubmissionFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'assessment_id',
+        'user_id',
+        'answers',
+        'question_marks',
+        'submitted_at',
+        'started_at',
+        'score',
+        'marker_notes',
+        'marked_at',
+    ];
 
     protected function casts(): array
     {

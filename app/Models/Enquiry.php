@@ -3,15 +3,27 @@
 namespace App\Models;
 
 use Database\Factories\EnquiryFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['name', 'email', 'phone', 'subject', 'message', 'is_read'])]
 class Enquiry extends Model
 {
     /** @use HasFactory<EnquiryFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'subject',
+        'message',
+        'is_read',
+    ];
 
     protected function casts(): array
     {

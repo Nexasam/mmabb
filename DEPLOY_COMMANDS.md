@@ -32,7 +32,11 @@ cd ~/mmabb && tar -xzf ~/deploy.tar.gz && rm ~/deploy.tar.gz && composer install
 ```
 
 ---
+@a60$qH9VMVBDxHl
 
+
+
+    @a60$qH9VMVBDxHl
 ## Frontend Only Deployment
 
 ### Step 1: Build and Package

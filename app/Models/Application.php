@@ -4,25 +4,30 @@ namespace App\Models;
 
 use App\Enums\ApplicationStatus;
 use Database\Factories\ApplicationFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable([
-    'user_id',
-    'course_id',
-    'full_name',
-    'email',
-    'phone',
-    'professional_background',
-    'status',
-    'admin_notes',
-])]
 class Application extends Model
 {
     /** @use HasFactory<ApplicationFactory> */
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'course_id',
+        'full_name',
+        'email',
+        'phone',
+        'professional_background',
+        'status',
+        'admin_notes',
+    ];
 
     protected function casts(): array
     {
