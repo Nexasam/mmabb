@@ -29,3 +29,12 @@ yarn-error.log
 composer.phar
 # Ignore loose mp4 files in root but allow public/videos/
 /*.mp4
+
+# Deployment artifacts
+*.tar.gz
+deploy-production.ps1
+force-production-mode.sh
+fix-vite-production.sh
+server-deploy-commands.txt
+favicon-replace-all.tar.gz
+production-deploy.tar.gz
