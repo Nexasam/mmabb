@@ -81,7 +81,7 @@ function parseJson<T>(raw: string | undefined, fallback: T): T {
 }
 
 export default function Home({ cms = {} }: { cms?: Cms }) {
-    const heroHeadline   = cms['hero.headline']   ?? "Specialist Care\nAt Home";
+    const heroHeadline   = cms['hero.headline']   ?? "Specialists Care\nAt Home";
     const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Healthcare is a CQC-rated Good, nurse-led provider serving North and South East England. We deliver complex clinical care, learning disability and autism support, mental health care, and domiciliary services — so people can live well in the comfort of their own homes.';
     const heroCtaLabel   = cms['hero.cta_label']  ?? 'Enquire About Care';
     const heroCtaHref    = cms['hero.cta_href']   ?? '/contact';
