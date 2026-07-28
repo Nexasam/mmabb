@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="/favicon.webp" type="image/svg+xml">
-        <link rel="icon" href="/favicon.webp" sizes="any">
+        <link rel="icon" href="/favicon.webp?v=3" type="image/webp">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
