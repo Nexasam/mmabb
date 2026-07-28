@@ -65,6 +65,8 @@ After adding all secrets, push the GitHub Actions workflow:
 git push origin main
 ```
 
+
+.
 Then watch the deployment:
 - Go to: https://github.com/Nexasam/mmabb/actions
 - You should see "Deploy to GoDaddy" running
