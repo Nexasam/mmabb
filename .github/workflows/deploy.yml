@@ -63,11 +63,11 @@ jobs:
         
     - name: Deploy to server
       run: |
-        rsync -avz --delete \
-          --exclude='storage/framework/cache/*' \
-          --exclude='storage/framework/sessions/*' \
-          --exclude='storage/framework/views/*' \
-          --exclude='storage/logs/*' \
+        rsync -avz \
+          --exclude='storage/framework/cache' \
+          --exclude='storage/framework/sessions' \
+          --exclude='storage/framework/views' \
+          --exclude='storage/logs' \
           --exclude='.env' \
           --exclude='database/database.sqlite' \
           deploy/ ${{ secrets.SSH_USER }}@mmabconsultingandheathcare.com:${{ secrets.DEPLOY_PATH }}/
@@ -80,6 +80,9 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd ${{ secrets.DEPLOY_PATH }}
+          mkdir -p storage/framework/{sessions,views,cache}
+          mkdir -p storage/logs
+          chmod -R 775 storage bootstrap/cache
           php artisan config:clear
           php artisan view:clear
           php artisan route:clear
