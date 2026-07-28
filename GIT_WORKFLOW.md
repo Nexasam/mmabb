@@ -3,6 +3,7 @@
 ## ✅ Setup Complete!
 
 Your GitHub SSH authentication is now configured and working perfectly!
+**Automatic deployment is also enabled!** 🚀
 
 ### What was done:
 - ✅ Switched from HTTPS to SSH authentication
