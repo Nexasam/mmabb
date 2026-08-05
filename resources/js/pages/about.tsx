@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { ArrowRight, Award, BookOpen, Brain, CheckCircle, GraduationCap, Heart, HeartPulse, Shield, Stethoscope, Users, Target, Sparkles, Lightbulb, UserCheck, Clock } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, Brain, CheckCircle, GraduationCap, Heart, HeartPulse, Shield, Stethoscope, Users, Target, Sparkles, Lightbulb, UserCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const values = [
