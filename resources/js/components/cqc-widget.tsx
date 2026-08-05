@@ -1,55 +1,32 @@
-import { useEffect, useRef } from 'react';
+import { Award } from 'lucide-react';
 
 /**
- * CQC Widget — dynamically loads the official CQC widget script
- * for location 1-15528561702 (MMAB Healthcare).
- *
- * The script must be loaded via useEffect because JSX <script> tags
- * do not execute in a React SPA.
+ * CQC Widget — displays MMAB Healthcare CQC rating information
+ * Location: 1-15528561702 (MMAB Healthcare)
+ * Rating: Good
+ * Date: 31 July 2025
  */
 export function CqcWidget() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const scriptLoadedRef = useRef(false);
-
-    useEffect(() => {
-        // Only load once
-        if (scriptLoadedRef.current) return;
-
-        const locationId = '1-15528561702';
-        const scriptId = 'cqc-widget-script';
-
-        // Check if script already exists (e.g., in case of HMR)
-        if (document.getElementById(scriptId)) {
-            scriptLoadedRef.current = true;
-            return;
-        }
-
-        // Create and inject the CQC widget script
-        const script = document.createElement('script');
-        script.id = scriptId;
-        script.src = `https://www.cqc.org.uk/sites/all/modules/custom/cqc_widget/widget.js?data-id=${locationId}&data-host=https://www.cqc.org.uk&type=location`;
-        script.async = true;
-        script.defer = true;
-
-        document.body.appendChild(script);
-        scriptLoadedRef.current = true;
-
-        return () => {
-            // Cleanup on unmount (optional — usually not needed for widgets)
-            const existingScript = document.getElementById(scriptId);
-            if (existingScript) {
-                existingScript.remove();
-            }
-        };
-    }, []);
-
     return (
-        <div
-            ref={containerRef}
-            id="cqc-widget"
-            data-id="1-15528561702"
-            data-host="https://www.cqc.org.uk"
-            className="cqc-widget-container"
-        />
+        <div className="flex items-center gap-4 rounded-xl border-2 border-brand-200 bg-white p-4 shadow-sm">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-green-100">
+                <svg className="h-10 w-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+            </div>
+            <div>
+                <div className="text-xs font-medium uppercase tracking-wide text-gray-500">CQC overall rating</div>
+                <div className="text-2xl font-bold text-green-600">Good</div>
+                <div className="text-xs text-gray-500">31 July 2025</div>
+                <a
+                    href="https://www.cqc.org.uk/location/1-15528561702"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-brand-600 hover:text-brand-700 underline underline-offset-2"
+                >
+                    See the report →
+                </a>
+            </div>
+        </div>
     );
 }

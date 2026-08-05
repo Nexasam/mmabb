@@ -500,7 +500,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             <main className="flex-1">{children}</main>
 
             {/* ── Footer ── */}
-            <footer className="bg-gray-950 text-gray-400">
+            <footer className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white text-gray-600">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="grid gap-10 md:grid-cols-4">
                         {/* Brand */}
@@ -509,10 +509,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                 <img
                                     src="/images/logo.webp"
                                     alt="MMAB Healthcare"
-                                    className="h-10 w-auto object-contain brightness-0 invert"
+                                    className="h-10 w-auto object-contain"
                                 />
-                                <div className="border-l border-white/20 pl-3">
-                                    <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-300">
+                                <div className="border-l border-gray-300 pl-3">
+                                    <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-600">
                                         Nurse-Led Care
                                     </div>
                                     <div className="text-[9px] text-gray-500">
@@ -549,7 +549,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="MMAB on Facebook"
-                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-brand-600 hover:text-white"
+                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-brand-600 hover:text-white"
                                 >
                                     <Facebook className="size-4" />
                                 </a>
@@ -558,7 +558,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="MMAB on LinkedIn"
-                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-gray-400 transition-colors hover:bg-brand-600 hover:text-white"
+                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-brand-600 hover:text-white"
                                 >
                                     <Linkedin className="size-4" />
                                 </a>
@@ -567,7 +567,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
                         {/* Navigation */}
                         <div>
-                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white">
+                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-900">
                                 Navigation
                             </h3>
                             <ul className="space-y-2.5 text-sm">
@@ -579,7 +579,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     { label: 'Contact Us', href: contact() },
                                 ].map((link) => (
                                     <li key={link.label}>
-                                        <Link href={link.href} className="transition-colors hover:text-brand-400">
+                                        <Link href={link.href} className="transition-colors hover:text-brand-600">
                                             {link.label}
                                         </Link>
                                     </li>
@@ -589,32 +589,32 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
                         {/* Services */}
                         <div>
-                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white">
+                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-900">
                                 Our Services
                             </h3>
                             <ul className="space-y-2.5 text-sm">
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
                                         Complex &amp; Clinical Care
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
                                         Mental Health &amp; LD Support
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
                                         Domiciliary &amp; Respite Care
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/courses" className="transition-colors hover:text-brand-400">
+                                    <Link href="/courses" className="transition-colors hover:text-brand-600">
                                         Clinical Training
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-400">
+                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
                                         Business Consultancy
                                     </Link>
                                 </li>
@@ -623,19 +623,19 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     </div>
 
                     {/* ── CQC Widget ── */}
-                    <div className="mt-12 border-t border-gray-800 pt-10">
+                    <div className="mt-12 border-t border-gray-200 pt-10">
                         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-10">
                             {/* Official CQC widget component */}
                             <div className="shrink-0">
                                 <CqcWidget />
                             </div>
-                            <p className="max-w-xs text-xs leading-relaxed text-gray-500">
+                            <p className="max-w-xs text-xs leading-relaxed text-gray-600">
                                 MMAB Healthcare is inspected and regulated by the Care Quality Commission — the independent regulator of health and social care in England.{' '}
                                 <a
                                     href="https://www.cqc.org.uk/location/1-15528561702"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-brand-400 underline underline-offset-2 hover:text-brand-300"
+                                    className="text-brand-600 underline underline-offset-2 hover:text-brand-700"
                                 >
                                     View our CQC report
                                 </a>
@@ -643,10 +643,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         </div>
                     </div>
 
-                    <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-gray-800 pt-8 text-xs sm:flex-row">
+                    <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-gray-200 pt-8 text-xs sm:flex-row">
                         <span>© {new Date().getFullYear()} MMAB Healthcare. All rights reserved.</span>
                         <div className="flex gap-5">
-                            <Link href="/contact" className="transition-colors hover:text-brand-400">
+                            <Link href="/contact" className="transition-colors hover:text-brand-600">
                                 Privacy Policy
                             </Link>
                             <Link href="/contact" className="transition-colors hover:text-brand-400">
