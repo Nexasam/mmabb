@@ -1,27 +1,37 @@
 import { Head, Link } from '@inertiajs/react';
-import { ArrowRight, Award, BookOpen, Brain, CheckCircle, GraduationCap, Heart, HeartPulse, Shield, Stethoscope, Users } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, Brain, CheckCircle, GraduationCap, Heart, HeartPulse, Shield, Stethoscope, Users, Target, Sparkles, Lightbulb } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const values = [
     {
         icon: Heart,
-        title: 'Person-Centred',
-        description: 'Every care plan is built around the individual — their needs, goals, and what matters most to them and their family.',
+        title: 'Person-Centred Care',
+        description: 'Every care plan is built around the individual—their needs, preferences, goals, and what truly matters to them and their family.',
     },
     {
         icon: Shield,
-        title: 'Safety First',
-        description: 'Nurse-led oversight and rigorous clinical governance underpin everything we do, keeping the people we support safe.',
+        title: 'Safety & Quality',
+        description: 'Nurse-led oversight, rigorous clinical governance, and a commitment to continuous improvement keep the people we support safe.',
     },
     {
         icon: Users,
-        title: 'Collaborative',
-        description: 'We work in genuine partnership with ICBs, NHS teams, local authorities, families, and multidisciplinary teams.',
+        title: 'Compassion',
+        description: 'We treat every person with dignity, respect, and genuine kindness—supporting not just clinical needs, but emotional wellbeing.',
     },
     {
         icon: Award,
-        title: 'Excellence',
-        description: 'Rated GOOD by the CQC and committed to continuous improvement — we hold ourselves to the highest standards of care.',
+        title: 'Professionalism',
+        description: 'CQC-rated Good and clinically led, we maintain the highest standards in everything we do—from staff training to care delivery.',
+    },
+    {
+        icon: Target,
+        title: 'Reliability',
+        description: 'Families and commissioners trust us to deliver consistent, high-quality care—mobilising quickly and maintaining stability over time.',
+    },
+    {
+        icon: Lightbulb,
+        title: 'Continuous Learning',
+        description: 'Our commitment to CPD-accredited training and evidence-based practice ensures our team stays at the forefront of complex care.',
     },
 ];
 
@@ -37,23 +47,24 @@ const trainingTopics = [
 export default function About() {
     return (
         <>
-            <Head title="About Us | MMAB Healthcare" />
+            <Head title="About MMAB Consulting & Healthcare | CQC Good Provider" />
 
             {/* ── Hero ─────────────────────────────────────────────────────── */}
-            <section className="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 pb-0 pt-20">
+            <section className="relative overflow-hidden bg-gradient-to-br from-brand-800 via-brand-700 to-brand-600 pb-0 pt-20">
                 <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand-500/20 blur-3xl" />
                 <div className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-                    <div className="max-w-2xl">
-                        <span className="mb-4 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-200">
+                    <div className="max-w-3xl">
+                        <span className="mb-4 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-100">
                             About Us
                         </span>
-                        <h1 className="mb-4 font-heading text-4xl font-extrabold leading-tight text-white lg:text-5xl">
-                            About MMAB Healthcare
+                        <h1 className="mb-5 font-heading text-4xl font-extrabold leading-tight text-white lg:text-5xl">
+                            About MMAB Consulting & Healthcare
                         </h1>
+                        <p className="mb-4 text-xl leading-relaxed text-brand-50">
+                            We are a CQC-rated Good, nurse-led provider delivering specialist complex care to adults and children across North and South East England.
+                        </p>
                         <p className="text-lg leading-relaxed text-brand-100">
-                            A CQC-rated GOOD, nurse-led home care provider delivering complex clinical care, mental
-                            health and LD support, and domiciliary care to adults and young people across North
-                            and South East England. <strong className="text-white">We Care.</strong>
+                            Our mission is to enable people with complex clinical needs to live safely, independently, and with dignity in their own homes—supported by experienced professionals who genuinely care.
                         </p>
                     </div>
                 </div>
@@ -65,40 +76,46 @@ export default function About() {
             </section>
 
             {/* ── Who we are ───────────────────────────────────────────────── */}
-            <section className="py-20">
+            <section className="py-20 lg:py-28">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid items-center gap-12 lg:grid-cols-2">
+                    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
                         <div>
                             <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">
                                 Who We Are
                             </p>
-                            <h2 className="mb-5 text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">
-                                Leaders in complex and clinical home care
+                            <h2 className="mb-5 font-heading text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">
+                                A trusted provider of complex care in the community
                             </h2>
+                            <p className="mb-4 text-lg leading-relaxed text-gray-700">
+                                MMAB Consulting & Healthcare is a CQC-rated Good provider delivering specialist complex care to adults and children with neurological conditions, brain injury, spinal injury, tracheostomy care, home ventilation, PEG feeding, learning disabilities, autism, and mental health conditions.
+                            </p>
                             <p className="mb-4 leading-relaxed text-gray-600">
-                                MMAB Healthcare is a trusted, nurse-led provider serving North and South East England.
-                                Rated GOOD by the CQC, our most recent inspection noted: <em>"Management led by example,
-                                with a strong focus on values and staff support."</em> We are dedicated to delivering
-                                high-quality, personalised care and support to individuals in the comfort of their own homes.
+                                Every person we support receives person-centred care tailored to their individual needs, goals, and preferences—enabling them to live safely and independently in the comfort of their own home, supported by their family and community.
                             </p>
                             <p className="mb-6 leading-relaxed text-gray-600">
-                                Our clinical team are leaders in complex home care, supporting individuals with
-                                neurological conditions, brain and spinal injury, tracheostomy, home ventilation,
-                                enteral feeding, seizure management, mental health needs, learning disabilities, and
-                                autism. Every care plan is developed thoughtfully in partnership with healthcare
-                                professionals, keeping the individual — and their family — at the centre.
+                                Our team of experienced nurses and support workers bring exceptional clinical depth, compassion, and professionalism to every care package. We work closely with ICBs, NHS teams, local authorities, and families to deliver care that truly makes a difference.
                             </p>
                             <Button asChild className="bg-brand-600 text-white hover:bg-brand-700">
                                 <Link href="/contact">
                                     <BookOpen className="mr-2 size-4" />
-                                    Refer a Package
+                                    Get in Touch
                                 </Link>
                             </Button>
                         </div>
 
-                        <div className="space-y-4">
-                            <blockquote className="rounded-2xl bg-brand-50 p-8">
-                                <p className="mb-4 text-lg font-medium italic leading-relaxed text-gray-700">
+                        <div className="space-y-5">
+                            {/* Professional care image */}
+                            <div className="overflow-hidden rounded-2xl shadow-lg">
+                                <img 
+                                    src="https://images.pexels.com/photos/7551657/pexels-photo-7551657.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" 
+                                    alt="Healthcare professional providing compassionate one-on-one support and person-centred care at home"
+                                    className="h-full w-full object-cover"
+                                    loading="lazy"
+                                />
+                            </div>
+                            
+                            <blockquote className="rounded-2xl border border-brand-100 bg-brand-50 p-8 shadow-sm">
+                                <p className="mb-4 text-lg font-medium italic leading-relaxed text-gray-800">
                                     "Management led by example, with a strong focus on values and staff support."
                                 </p>
                                 <footer className="text-sm font-semibold text-brand-700">
@@ -107,14 +124,14 @@ export default function About() {
                             </blockquote>
                             <div className="grid grid-cols-2 gap-4">
                                 {[
-                                    { value: 'GOOD',       label: 'CQC Rating'         },
-                                    { value: 'Nurse-Led',  label: 'Clinical leadership' },
-                                    { value: 'CPD',        label: 'Accredited training' },
-                                    { value: 'NE England', label: 'Coverage area'       },
+                                    { value: 'CQC Good',       label: 'Quality Rating'         },
+                                    { value: 'Nurse-Led',      label: 'Clinical Oversight'     },
+                                    { value: 'CPD Accredited', label: 'Training Programmes'    },
+                                    { value: 'Nationwide',     label: 'Coverage'               },
                                 ].map((s) => (
-                                    <div key={s.label} className="rounded-xl border border-gray-100 bg-white p-4 text-center shadow-sm">
+                                    <div key={s.label} className="rounded-xl border border-gray-100 bg-white p-5 text-center shadow-sm">
                                         <div className="text-2xl font-extrabold text-brand-700">{s.value}</div>
-                                        <div className="mt-0.5 text-xs text-gray-500">{s.label}</div>
+                                        <div className="mt-1 text-xs font-medium text-gray-500">{s.label}</div>
                                     </div>
                                 ))}
                             </div>
@@ -123,8 +140,63 @@ export default function About() {
                 </div>
             </section>
 
+            {/* ── Mission, Vision & Values ─────────────────────────────────── */}
+            <section className="bg-gradient-to-br from-gray-50 to-brand-50/20 py-20 lg:py-28">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="mb-14 text-center">
+                        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">
+                            Our Purpose
+                        </p>
+                        <h2 className="font-heading text-3xl font-extrabold text-gray-900 lg:text-4xl">Mission, Vision & Values</h2>
+                    </div>
+
+                    <div className="mb-16 grid gap-8 lg:grid-cols-2">
+                        {/* Mission */}
+                        <div className="rounded-2xl border border-brand-100 bg-white p-8 shadow-sm">
+                            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-100">
+                                <Target className="size-7 text-brand-600" />
+                            </div>
+                            <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">Our Mission</h3>
+                            <p className="leading-relaxed text-gray-600">
+                                To deliver high-quality, person-centred complex care that enables adults and children with complex clinical needs to live safely, independently, and with dignity in their own homes—supported by experienced professionals who genuinely care.
+                            </p>
+                        </div>
+
+                        {/* Vision */}
+                        <div className="rounded-2xl border border-brand-100 bg-white p-8 shadow-sm">
+                            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-brand-100">
+                                <Sparkles className="size-7 text-brand-600" />
+                            </div>
+                            <h3 className="mb-3 font-heading text-xl font-bold text-gray-900">Our Vision</h3>
+                            <p className="leading-relaxed text-gray-600">
+                                To be recognized as a leading provider of specialist complex care in England—known for clinical excellence, compassionate support, and a commitment to enabling people to live the lives they choose within their communities.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Values Grid */}
+                    <div>
+                        <h3 className="mb-8 text-center font-heading text-2xl font-bold text-gray-900">Our Values</h3>
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {values.map((value) => (
+                                <div
+                                    key={value.title}
+                                    className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+                                >
+                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50">
+                                        <value.icon className="size-6 text-brand-600" />
+                                    </div>
+                                    <h3 className="mb-2 font-bold text-gray-900">{value.title}</h3>
+                                    <p className="text-sm leading-relaxed text-gray-600">{value.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* ── Leadership profile ───────────────────────────────────────── */}
-            <section className="bg-gray-50 py-20">
+            <section className="bg-white py-20 lg:py-28">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mb-12 text-center">
                         <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">
@@ -201,73 +273,57 @@ export default function About() {
                 </div>
             </section>
 
-            {/* ── Values ───────────────────────────────────────────────────── */}
-            <section className="py-20">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="mb-12 text-center">
-                        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">
-                            What Drives Us
-                        </p>
-                        <h2 className="text-3xl font-extrabold text-gray-900 lg:text-4xl">Our Values</h2>
-                    </div>
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                        {values.map((value) => (
-                            <div
-                                key={value.title}
-                                className="rounded-xl border border-gray-100 bg-white p-6 text-center shadow-sm"
-                            >
-                                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-50">
-                                    <value.icon className="size-7 text-brand-600" />
-                                </div>
-                                <h3 className="mb-2 font-bold text-gray-900">{value.title}</h3>
-                                <p className="text-sm leading-relaxed text-gray-500">{value.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+
 
             {/* ── What we offer ────────────────────────────────────────────── */}
-            <section className="bg-gray-50 py-20">
+            <section className="bg-gradient-to-br from-gray-50 to-white py-20 lg:py-28">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid items-center gap-12 lg:grid-cols-2">
+                    <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
                         <div className="order-2 lg:order-1">
-                            <ul className="space-y-4">
+                            <ul className="space-y-5">
                                 {[
-                                    'Complex clinical care: nurse-led packages for neurological conditions, brain injury, spinal injury — including tracheostomy and airway management, PEG feeding, stoma and catheter care',
-                                    'Mental health, learning disability & autism: personalised plans to promote emotional wellbeing, staff trained in condition-specific care, supporting independence and life skills',
-                                    'Domiciliary & respite care: personal care, meal preparation, mobility, household tasks, community access — ongoing support or short-term respite, including compassionate end of life care',
-                                    'Clinical training: CPD-accredited, delivered by experienced clinical educators with staff competency assessments for delegated nursing tasks',
-                                    'Business consultancy: regulatory compliance audits, CQC inspection preparation, staff consultation support and other operational services',
-                                    'Commissioner partnerships: working with ICBs, NHS teams, and local authorities across North and South East England',
+                                    'Complex Care: Nurse-led packages for adults and children with tracheostomy, home ventilation, PEG feeding, neurological conditions, brain injury, and spinal injury—enabling people to stay at home with family.',
+                                    'Staffing Solutions: Highly skilled healthcare professionals available for short-term placements and ongoing packages—registered nurses, support workers, and clinical specialists.',
+                                    'Recruitment Services: End-to-end recruitment for healthcare providers—sourcing, screening, and onboarding qualified staff with clinical competence and cultural fit.',
+                                    'Learning Disabilities & Autism: Person-centred support for adults and young people with learning disabilities and autism, promoting independence and community integration.',
+                                    'Mental Health Support: Compassionate care for individuals with mental health conditions—tailored plans focused on wellbeing, stability, and recovery.',
+                                    'Clinical Training: CPD-accredited training programmes delivered by experienced educators—tracheostomy, ventilation, enteral feeding, and more.',
                                 ].map((item) => (
                                     <li key={item} className="flex items-start gap-3">
-                                        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600">
-                                            <CheckCircle className="size-3 text-white" />
+                                        <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600">
+                                            <CheckCircle className="size-3.5 text-white" />
                                         </div>
-                                        <span className="text-sm leading-relaxed text-gray-700">{item}</span>
+                                        <span className="text-base leading-relaxed text-gray-700">{item}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="order-1 lg:order-2">
-                            <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">
-                                What We Offer
-                            </p>
-                            <h2 className="mb-5 text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">
-                                A full spectrum of nurse-led care and support
-                            </h2>
-                            <p className="mb-6 leading-relaxed text-gray-600">
-                                We are currently accepting new packages and are keen to support your team with
-                                flexible, nurse-led solutions that prioritise safety, independence, and
-                                person-centred care. Our training is CPD accredited and our consultancy helps
-                                providers improve care quality and compliance.
-                            </p>
-                            <Button asChild className="bg-brand-600 text-white hover:bg-brand-700">
-                                <Link href="/contact">
-                                    Get in Touch <ArrowRight className="ml-1.5 size-4" />
-                                </Link>
-                            </Button>
+                        <div className="order-1 space-y-6 lg:order-2">
+                            <div>
+                                <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-600">
+                                    What We Offer
+                                </p>
+                                <h2 className="mb-5 font-heading text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl">
+                                    Comprehensive care and healthcare workforce solutions
+                                </h2>
+                                <p className="mb-6 text-lg leading-relaxed text-gray-600">
+                                    We are currently accepting new care packages and are committed to supporting commissioners, local authorities, and families with flexible, nurse-led solutions that prioritize safety, independence, and person-centred care.
+                                </p>
+                                <Button asChild className="bg-brand-600 text-white hover:bg-brand-700">
+                                    <Link href="/contact">
+                                        Get in Touch <ArrowRight className="ml-2 size-4" />
+                                    </Link>
+                                </Button>
+                            </div>
+                            {/* Professional healthcare team image */}
+                            <div className="overflow-hidden rounded-2xl shadow-lg">
+                                <img 
+                                    src="https://images.pexels.com/photos/7551608/pexels-photo-7551608.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" 
+                                    alt="Caring healthcare professional supporting elderly person at home with dignity and compassion"
+                                    className="h-full w-full object-cover"
+                                    loading="lazy"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -316,19 +372,18 @@ export default function About() {
             </section>
 
             {/* ── CTA ──────────────────────────────────────────────────────── */}
-            <section className="bg-brand-700 py-16 text-white">
-                <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-                    <h2 className="mb-3 text-2xl font-extrabold lg:text-3xl">Work with MMAB Healthcare</h2>
-                    <p className="mb-8 text-brand-100">
-                        We are currently accepting new packages and are keen to support your team. Get in touch
-                        to discuss a referral or find out more about our services.
+            <section className="bg-gradient-to-br from-brand-700 to-brand-600 py-16 text-white lg:py-20">
+                <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+                    <h2 className="mb-4 font-heading text-3xl font-extrabold lg:text-4xl">Work with MMAB Consulting & Healthcare</h2>
+                    <p className="mb-8 text-lg text-brand-50">
+                        We are currently accepting new care packages and are ready to support commissioners, local authorities, and families. Contact us to discuss a referral or learn more about our services.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
                         <Button asChild size="lg" className="bg-white font-semibold text-brand-700 hover:bg-brand-50">
                             <Link href="/contact">Refer a Package</Link>
                         </Button>
-                        <Button asChild size="lg" variant="outline" className="border-white/50 text-white hover:bg-white/10">
-                            <Link href="/courses">Browse Training</Link>
+                        <Button asChild size="lg" variant="outline" className="border-2 border-white/50 text-white hover:bg-white/10">
+                            <Link href="/training">Browse Training</Link>
                         </Button>
                     </div>
                 </div>

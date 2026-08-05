@@ -1,0 +1,42 @@
+REQUIRED IMAGES FOR MMAB CONSULTING & HEALTHCARE WEBSITE
+=========================================================
+
+Download FREE stock photos from these sites and save them here:
+
+1. Unsplash: https://unsplash.com/s/photos/home-healthcare
+2. Pexels: https://www.pexels.com/search/home%20care/
+3. Pixabay: https://pixabay.com/images/search/home%20healthcare/
+
+REQUIRED FILES (save with these exact names):
+---------------------------------------------
+✓ logo.webp (already exists)
+⚠ home-care-hero.jpg - Main homepage hero image
+⚠ complex-care-1.jpg - Complex care service image
+⚠ staffing-solutions.jpg - Staffing service image  
+⚠ recruitment-service.jpg - Recruitment service image
+⚠ caregiver-support.jpg - About us care image
+⚠ home-environment.jpg - Home care setting
+⚠ community-care.jpg - Community support
+
+IMAGE REQUIREMENTS:
+-------------------
+✅ HOME settings (living rooms, bedrooms)
+✅ Caregivers with clients
+✅ People with complex needs
+✅ Warm, professional atmosphere
+✅ Natural lighting
+
+❌ NO hospitals or clinical settings
+❌ NO doctors with stethoscopes
+❌ NO white coats or medical uniforms
+❌ NO cold, institutional environments
+
+QUICK START:
+------------
+1. Visit: https://unsplash.com/s/photos/home-healthcare
+2. Download 5-7 images showing home care scenarios
+3. Rename them according to the list above
+4. Save in this folder (public/images/)
+5. Refresh your website!
+
+See IMAGE_GUIDE.md for detailed instructions.

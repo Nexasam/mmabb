@@ -33,39 +33,33 @@ import { CqcWidget } from '@/components/cqc-widget';
 const servicesMenu = [
     {
         icon: HeartPulse,
-        label: 'Complex & Clinical Care',
-        desc: 'Tracheostomy, ventilation, enteral feeding & more',
-        href: '/contact',
-    },
-    {
-        icon: Brain,
-        label: 'Mental Health & LD Support',
-        desc: 'Mental health, learning disability & autism',
+        label: 'Complex Care',
+        desc: 'Tracheostomy, ventilation, enteral feeding & neurological care',
         href: '/contact',
     },
     {
         icon: Users,
-        label: 'Domiciliary & Respite Care',
-        desc: 'Flexible care for adults and young people',
+        label: 'Staffing Solutions',
+        desc: 'Skilled healthcare professionals for temporary & permanent placements',
+        href: '/contact',
+    },
+    {
+        icon: ClipboardList,
+        label: 'Recruitment Services',
+        desc: 'End-to-end recruitment for healthcare providers',
+        href: '/contact',
+    },
+    {
+        icon: Brain,
+        label: 'Learning Disabilities & Autism',
+        desc: 'Person-centred support promoting independence',
         href: '/contact',
     },
     {
         icon: Stethoscope,
         label: 'Clinical Training',
-        desc: 'CPD-accredited complex care programmes',
-        href: '/courses',
-    },
-    {
-        icon: ClipboardList,
-        label: 'Business Consultancy',
-        desc: 'CQC compliance & care quality improvement',
-        href: '/contact',
-    },
-    {
-        icon: ShieldCheck,
-        label: 'ICB & NHS Partnerships',
-        desc: 'Accepting new packages from commissioners',
-        href: '/contact',
+        desc: 'CPD-accredited complex care training programmes',
+        href: '/training',
     },
 ];
 
@@ -527,9 +521,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                 </div>
                             </div>
                             <p className="mb-5 max-w-sm text-sm leading-relaxed">
-                                Nurse-led home care provider rated GOOD by the CQC. Serving North and South East
-                                England with complex clinical care, mental health and LD support, and domiciliary
-                                care for adults and young people. <em>We Care.</em>
+                                Nurse-led provider of specialist complex care, rated Good by the CQC. Serving North and South East
+                                England with complex clinical care for adults and children, staffing solutions, and recruitment services. <em>We Care.</em>
                             </p>
                             <div className="mb-5 space-y-2 text-sm">
                                 <a href="tel:01913804370" className="flex items-center gap-2 transition-colors hover:text-brand-400">

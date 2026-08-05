@@ -31,9 +31,9 @@ export default function Contact() {
                         <span className="mb-4 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-brand-200">
                             Contact Us
                         </span>
-                        <h1 className="mb-4 font-heading text-4xl font-extrabold leading-tight text-white lg:text-5xl">Refer a Package or Get in Touch</h1>
+                        <h1 className="mb-4 font-heading text-4xl font-extrabold leading-tight text-white lg:text-5xl">Contact MMAB Consulting & Healthcare</h1>
                         <p className="text-lg leading-relaxed text-brand-100">
-                            Whether you're a commissioner, ICB, local authority, or a family looking for specialist nurse-led care, we'd love to hear from you.
+                            Whether you're a commissioner, ICB, local authority, or a family seeking specialist nurse-led care—we're here to help. Contact us to discuss a referral or make an enquiry.
                         </p>
                     </div>
                 </div>
@@ -86,22 +86,23 @@ export default function Contact() {
                             <div className="rounded-xl bg-brand-50 p-6">
                                 <div className="mb-3 flex items-center gap-2">
                                     <Clock className="size-4 text-brand-600" />
-                                    <span className="text-sm font-semibold text-brand-800">Office Hours</span>
+                                    <span className="text-sm font-semibold text-brand-800">Working Hours</span>
                                 </div>
                                 <ul className="space-y-1.5 text-sm text-gray-600">
-                                    <li className="flex justify-between"><span>Monday – Friday</span><span className="font-medium">9:00am – 5:00pm</span></li>
-                                    <li className="flex justify-between"><span>Saturday</span><span className="font-medium">Closed</span></li>
-                                    <li className="flex justify-between"><span>Sunday</span><span className="font-medium">Closed</span></li>
+                                    <li className="flex justify-between"><span>Monday – Friday</span><span className="font-medium">9:00 AM – 5:00 PM</span></li>
+                                    <li className="flex justify-between"><span>Evenings</span><span className="font-medium">On-call available</span></li>
+                                    <li className="flex justify-between"><span>Weekends</span><span className="font-medium">On-call available</span></li>
                                 </ul>
+                                <p className="mt-3 text-xs text-gray-500">For urgent care enquiries, please call during office hours</p>
                             </div>
 
                             <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
                                 <h3 className="mb-2 font-bold text-gray-900">Looking for training?</h3>
                                 <p className="mb-4 text-sm text-gray-500">
-                                    We deliver CPD-accredited complex care training and clinical consultancy to healthcare professionals and organisations across the UK.
+                                    We deliver CPD-accredited complex care training programmes to healthcare professionals and organisations across England.
                                 </p>
-                                <Link href="/courses" className="text-sm font-semibold text-brand-600 hover:text-brand-700">
-                                    Browse Training Courses →
+                                <Link href="/training" className="text-sm font-semibold text-brand-600 hover:text-brand-700">
+                                    Browse Training Programmes →
                                 </Link>
                             </div>
 

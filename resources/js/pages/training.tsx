@@ -93,13 +93,12 @@ export default function Training() {
                             Clinical Training
                         </span>
                         <h1 className="mb-4 font-heading text-4xl font-extrabold leading-tight text-white lg:text-5xl">
-                            Training We Offer
+                            Clinical Training Programmes
                         </h1>
                         <p className="text-lg leading-relaxed text-brand-100">
                             CPD-accredited clinical training programmes for healthcare professionals and support staff
-                            working with children, young people, and adults with complex care needs, neurological
-                            conditions, and learning disabilities. Designed and delivered by our clinical lead with
-                            over 30 years of neonatal, paediatric, and complex care expertise.
+                            working with children, young people, and adults with complex care needs. Designed and delivered 
+                            by experienced clinicians with over 30 years of expertise in neonatal, paediatric, and complex care.
                         </p>
                     </div>
                 </div>
@@ -226,7 +225,7 @@ export default function Training() {
                     </motion.div>
 
                     <div className="grid gap-6 md:grid-cols-2">
-                        <motion.a
+                                    <motion.a
                             {...fadeUp(0.1)}
                             href="https://mmabconsulting.com"
                             target="_blank"
@@ -237,11 +236,11 @@ export default function Training() {
                                 <ExternalLink className="size-7 text-brand-700" />
                             </div>
                             <h3 className="mb-3 font-heading text-xl font-bold text-gray-900 transition-colors group-hover:text-brand-700">
-                                MMAB Consulting Website
+                                MMAB Training Portal
                             </h3>
                             <p className="mb-5 flex-1 text-sm leading-relaxed text-gray-600">
-                                Visit our main training website for the full catalogue of courses, booking
-                                information, and detailed programme content.
+                                Visit our dedicated training portal for the full catalogue of courses, detailed programme 
+                                content, and booking information.
                             </p>
                             <div className="flex items-center gap-2 text-sm font-semibold text-brand-600 transition-colors group-hover:text-brand-700">
                                 Browse all courses
