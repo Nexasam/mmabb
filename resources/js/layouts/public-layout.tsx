@@ -500,7 +500,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             <main className="flex-1">{children}</main>
 
             {/* ── Footer ── */}
-            <footer className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-white text-gray-600">
+            <footer className="bg-gradient-to-br from-brand-700 via-brand-600 to-brand-700 text-white">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="grid gap-10 md:grid-cols-4">
                         {/* Brand */}
@@ -509,36 +509,36 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                 <img
                                     src="/images/logo.webp"
                                     alt="MMAB Healthcare"
-                                    className="h-10 w-auto object-contain"
+                                    className="h-10 w-auto object-contain brightness-0 invert"
                                 />
-                                <div className="border-l border-gray-300 pl-3">
-                                    <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-600">
+                                <div className="border-l border-white/30 pl-3">
+                                    <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-100">
                                         Nurse-Led Care
                                     </div>
-                                    <div className="text-[9px] text-gray-500">
+                                    <div className="text-[9px] text-brand-200">
                                         CQC Rated Good
                                     </div>
                                 </div>
                             </div>
-                            <p className="mb-5 max-w-sm text-sm leading-relaxed">
+                            <p className="mb-5 max-w-sm text-sm leading-relaxed text-brand-100">
                                 Nurse-led provider of specialist complex care, rated Good by the CQC. Serving North and South East
                                 England with complex clinical care for adults and children, staffing solutions, and recruitment services. <em>We Care.</em>
                             </p>
                             <div className="mb-5 space-y-2 text-sm">
-                                <a href="tel:01913804370" className="flex items-center gap-2 transition-colors hover:text-brand-400">
-                                    <Phone className="size-3.5 shrink-0 text-brand-500" />
+                                <a href="tel:01913804370" className="flex items-center gap-2 text-brand-100 transition-colors hover:text-white">
+                                    <Phone className="size-3.5 shrink-0 text-brand-200" />
                                     0191 380 4370
                                 </a>
-                                <a href="mailto:info@mmabconsulting.com" className="flex items-center gap-2 transition-colors hover:text-brand-400">
-                                    <Mail className="size-3.5 shrink-0 text-brand-500" />
+                                <a href="mailto:info@mmabconsulting.com" className="flex items-center gap-2 text-brand-100 transition-colors hover:text-white">
+                                    <Mail className="size-3.5 shrink-0 text-brand-200" />
                                     info@mmabconsulting.com
                                 </a>
-                                <div className="flex items-start gap-2 text-gray-500">
-                                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand-500" />
+                                <div className="flex items-start gap-2 text-brand-100">
+                                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand-200" />
                                     <span>Victoria House, Whitfield Court, St John's Road, Meadowfield, Durham DH7 8XL</span>
                                 </div>
-                                <div className="flex items-start gap-2 text-gray-500">
-                                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand-500" />
+                                <div className="flex items-start gap-2 text-brand-100">
+                                    <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand-200" />
                                     <span>32 Avondale Road, London N13 4DU</span>
                                 </div>
                             </div>
@@ -549,7 +549,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="MMAB on Facebook"
-                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-brand-600 hover:text-white"
+                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white hover:text-brand-600"
                                 >
                                     <Facebook className="size-4" />
                                 </a>
@@ -558,7 +558,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label="MMAB on LinkedIn"
-                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-brand-600 hover:text-white"
+                                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white hover:text-brand-600"
                                 >
                                     <Linkedin className="size-4" />
                                 </a>
@@ -567,7 +567,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
                         {/* Navigation */}
                         <div>
-                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-900">
+                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white">
                                 Navigation
                             </h3>
                             <ul className="space-y-2.5 text-sm">
@@ -579,7 +579,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                                     { label: 'Contact Us', href: contact() },
                                 ].map((link) => (
                                     <li key={link.label}>
-                                        <Link href={link.href} className="transition-colors hover:text-brand-600">
+                                        <Link href={link.href} className="text-brand-100 transition-colors hover:text-white">
                                             {link.label}
                                         </Link>
                                     </li>
@@ -589,32 +589,32 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
                         {/* Services */}
                         <div>
-                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-gray-900">
+                            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white">
                                 Our Services
                             </h3>
                             <ul className="space-y-2.5 text-sm">
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
+                                    <Link href="/contact" className="text-brand-100 transition-colors hover:text-white">
                                         Complex &amp; Clinical Care
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
+                                    <Link href="/contact" className="text-brand-100 transition-colors hover:text-white">
                                         Mental Health &amp; LD Support
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
+                                    <Link href="/contact" className="text-brand-100 transition-colors hover:text-white">
                                         Domiciliary &amp; Respite Care
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/courses" className="transition-colors hover:text-brand-600">
+                                    <Link href="/courses" className="text-brand-100 transition-colors hover:text-white">
                                         Clinical Training
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact" className="transition-colors hover:text-brand-600">
+                                    <Link href="/contact" className="text-brand-100 transition-colors hover:text-white">
                                         Business Consultancy
                                     </Link>
                                 </li>
@@ -623,19 +623,19 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                     </div>
 
                     {/* ── CQC Widget ── */}
-                    <div className="mt-12 border-t border-gray-200 pt-10">
+                    <div className="mt-12 border-t border-white/20 pt-10">
                         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-10">
                             {/* Official CQC widget component */}
                             <div className="shrink-0">
                                 <CqcWidget />
                             </div>
-                            <p className="max-w-xs text-xs leading-relaxed text-gray-600">
+                            <p className="max-w-xs text-xs leading-relaxed text-brand-100">
                                 MMAB Healthcare is inspected and regulated by the Care Quality Commission — the independent regulator of health and social care in England.{' '}
                                 <a
                                     href="https://www.cqc.org.uk/location/1-15528561702"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-brand-600 underline underline-offset-2 hover:text-brand-700"
+                                    className="text-white underline underline-offset-2 hover:text-brand-100"
                                 >
                                     View our CQC report
                                 </a>
@@ -643,10 +643,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
                         </div>
                     </div>
 
-                    <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-gray-200 pt-8 text-xs sm:flex-row">
+                    <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/20 pt-8 text-xs text-brand-100 sm:flex-row">
                         <span>© {new Date().getFullYear()} MMAB Healthcare. All rights reserved.</span>
                         <div className="flex gap-5">
-                            <Link href="/contact" className="transition-colors hover:text-brand-600">
+                            <Link href="/contact" className="transition-colors hover:text-white">
                                 Privacy Policy
                             </Link>
                             <Link href="/contact" className="transition-colors hover:text-brand-400">
