@@ -191,7 +191,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                                         <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                                     </Link>
                                 </Button>
-                                <Button asChild size="lg" variant="outline" className="border-2 border-brand-200 hover:bg-brand-50">
+                                <Button asChild size="lg" variant="outline" className="border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white hover:border-brand-600">
                                     <a href="tel:01913804370">
                                         <Phone className="mr-2 size-4" />
                                         Call Us Now
