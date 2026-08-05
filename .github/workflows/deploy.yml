@@ -80,6 +80,17 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd ${{ secrets.DEPLOY_PATH }}
+          
+          # Check if .env exists, if not copy from .env.production
+          if [ ! -f .env ]; then
+            echo "Creating .env from .env.production"
+            cp .env.production .env
+          fi
+          
+          # Ensure production settings are correct
+          sed -i 's/APP_ENV=.*/APP_ENV=production/' .env
+          sed -i 's/APP_DEBUG=.*/APP_DEBUG=false/' .env
+          
           mkdir -p storage/framework/{sessions,views,cache}
           mkdir -p storage/logs
           chmod -R 775 storage bootstrap/cache
