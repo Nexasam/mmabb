@@ -85,7 +85,7 @@ function parseJson<T>(raw: string | undefined, fallback: T): T {
 }
 
 export default function Home({ cms = {} }: { cms?: Cms }) {
-    const heroHeadline   = cms['hero.headline']   ?? "Professional Complex Care\nAt Home";
+    const heroHeadline   = cms['hero.headline']   ?? "Complex care\nadults and children";
     const heroSubtext    = cms['hero.subtext']    ?? 'MMAB Consulting & Healthcare is a CQC-rated Good, nurse-led provider delivering specialist complex care to adults and children across North and South East England. We provide person-centred care enabling people to live safely and independently in their own homes.';
     const heroCtaLabel   = cms['hero.cta_label']  ?? 'Refer a Package';
     const heroCtaHref    = cms['hero.cta_href']   ?? '/contact';
@@ -135,7 +135,7 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
             <Head title="Complex Care Provider | CQC Good | MMAB Consulting & Healthcare" />
 
             {/* ── CQC BADGE BANNER ── */}
-            <div className="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-700 py-3">
+            <div className="bg-gradient-to-r from-brand-600 via-brand-500 to-brand-600 py-3">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
                         <div className="flex items-center gap-3">
@@ -154,11 +154,25 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                 </div>
             </div>
 
+            {/* ── STATS BAR - MOVED TO TOP ── */}
+            <div className="border-b border-gray-100 bg-white shadow-sm">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-2 divide-x divide-gray-100 md:grid-cols-4">
+                        {statsItems.map((stat, i) => (
+                            <motion.div key={stat.label} {...fadeUp(i * 0.08)} className="py-6 text-center">
+                                <div className="font-heading text-2xl font-extrabold text-brand-700">{stat.value}</div>
+                                <div className="mt-0.5 text-xs font-medium uppercase tracking-wide text-gray-500">{stat.label}</div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             {/* ── HERO ── */}
-            <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-brand-50/30 pb-20 pt-16 lg:pb-28 lg:pt-20">
+            <section className="relative overflow-hidden bg-gradient-to-br from-brand-50/30 via-white to-blue-50/20 pb-20 pt-16 lg:pb-28 lg:pt-20">
                 {/* Background decorative elements */}
-                <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 translate-x-32 -translate-y-32 rounded-full bg-brand-100/40 blur-3xl" />
-                <div className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 -translate-x-24 translate-y-24 rounded-full bg-brand-200/30 blur-3xl" />
+                <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 translate-x-32 -translate-y-32 rounded-full bg-blue-100/30 blur-3xl" />
+                <div className="pointer-events-none absolute bottom-0 left-0 h-80 w-80 -translate-x-24 translate-y-24 rounded-full bg-brand-100/20 blur-3xl" />
                 
                 <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
@@ -225,20 +239,6 @@ export default function Home({ cms = {} }: { cms?: Cms }) {
                     </div>
                 </div>
             </section>
-
-            {/* ── STATS BAR ── */}
-            <div className="border-b border-gray-100 bg-white shadow-sm">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 divide-x divide-gray-100 md:grid-cols-4">
-                        {statsItems.map((stat, i) => (
-                            <motion.div key={stat.label} {...fadeUp(i * 0.08)} className="py-6 text-center">
-                                <div className="font-heading text-2xl font-extrabold text-brand-700">{stat.value}</div>
-                                <div className="mt-0.5 text-xs font-medium uppercase tracking-wide text-gray-400">{stat.label}</div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </div>
 
             {/* ── 2. SERVICES ── */}
             <section className="relative overflow-hidden bg-white py-20 lg:py-28" aria-labelledby="services-heading">
