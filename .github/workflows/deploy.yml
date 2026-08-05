@@ -71,6 +71,9 @@ jobs:
           --exclude='.env' \
           --exclude='database/database.sqlite' \
           deploy/ ${{ secrets.SSH_USER }}@mmabconsultingandheathcare.com:${{ secrets.DEPLOY_PATH }}/
+        
+        # Deploy .env.production as .env if .env doesn't exist
+        ssh ${{ secrets.SSH_USER }}@mmabconsultingandheathcare.com "cd ${{ secrets.DEPLOY_PATH }} && [ ! -f .env ] && cp .env.production .env || true"
           
     - name: Run post-deployment commands
       uses: appleboy/ssh-action@v1.0.0
@@ -91,11 +94,20 @@ jobs:
           sed -i 's/APP_ENV=.*/APP_ENV=production/' .env
           sed -i 's/APP_DEBUG=.*/APP_DEBUG=false/' .env
           
+          # Create necessary directories
           mkdir -p storage/framework/{sessions,views,cache}
           mkdir -p storage/logs
           chmod -R 775 storage bootstrap/cache
+          
+          # CRITICAL: Remove config cache to force reload
+          rm -f bootstrap/cache/config.php
+          
+          # Clear all caches
           php artisan config:clear
+          php artisan config:cache
           php artisan view:clear
           php artisan route:clear
           php artisan cache:clear
+          
           echo "Deployment completed at $(date)"
+          echo "APP_ENV is: $(php artisan tinker --execute='echo config(\"app.env\");')"
