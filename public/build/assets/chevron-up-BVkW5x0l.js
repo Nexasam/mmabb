@@ -1,1 +1,0 @@
-import{$ as e}from"./app-C1_u-8SN.js";var t=e(`ChevronUp`,[[`path`,{d:`m18 15-6-6-6 6`,key:`153udz`}]]);export{t};
