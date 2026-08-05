@@ -102,6 +102,10 @@ jobs:
           # CRITICAL: Remove config cache to force reload
           rm -f bootstrap/cache/config.php
           
+          # CRITICAL: Remove hot file that forces dev mode
+          rm -f public/hot
+          rm -f public/.vite
+          
           # Clear all caches
           php artisan config:clear
           php artisan config:cache
