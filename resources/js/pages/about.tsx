@@ -87,13 +87,10 @@ export default function About() {
                                 A trusted provider of complex care in the community
                             </h2>
                             <p className="mb-4 text-lg leading-relaxed text-gray-700">
-                                MMAB Consulting & Healthcare is a CQC-rated Good provider delivering specialist complex care to adults and children with neurological conditions, brain injury, spinal injury, tracheostomy care, home ventilation, PEG feeding, learning disabilities, autism, and mental health conditions.
-                            </p>
-                            <p className="mb-4 leading-relaxed text-gray-600">
-                                Every person we support receives person-centred care tailored to their individual needs, goals, and preferences—enabling them to live safely and independently in the comfort of their own home, supported by their family and community.
+                                MMAB Consulting & Healthcare is a CQC-registered provider rated 'Good', delivering tailored complex care packages for individuals with significant clinical, physical, and neurological needs. Our experienced teams support individuals in their own homes, supported living environments, residential settings, rehabilitation pathways, and transitional care arrangements—with the capacity to mobilise services rapidly whenever required.
                             </p>
                             <p className="mb-6 leading-relaxed text-gray-600">
-                                Our team of experienced nurses and support workers bring exceptional clinical depth, compassion, and professionalism to every care package. We work closely with ICBs, NHS teams, local authorities, and families to deliver care that truly makes a difference.
+                                We work in close partnership with case managers, multidisciplinary teams (MDTs), healthcare professionals, commissioners, individuals, and their families. Together, we deliver person-centred care that promotes independence, rehabilitation, overall wellbeing, and positive long-term outcomes.
                             </p>
                             <Button asChild className="bg-brand-600 text-white hover:bg-brand-700">
                                 <Link href="/contact">
@@ -282,12 +279,12 @@ export default function About() {
                         <div className="order-2 lg:order-1">
                             <ul className="space-y-5">
                                 {[
-                                    'Complex Care: Nurse-led packages for adults and children with tracheostomy, home ventilation, PEG feeding, neurological conditions, brain injury, and spinal injury—enabling people to stay at home with family.',
-                                    'Staffing Solutions: Highly skilled healthcare professionals available for short-term placements and ongoing packages—registered nurses, support workers, and clinical specialists.',
-                                    'Recruitment Services: End-to-end recruitment for healthcare providers—sourcing, screening, and onboarding qualified staff with clinical competence and cultural fit.',
-                                    'Learning Disabilities & Autism: Person-centred support for adults and young people with learning disabilities and autism, promoting independence and community integration.',
-                                    'Mental Health Support: Compassionate care for individuals with mental health conditions—tailored plans focused on wellbeing, stability, and recovery.',
-                                    'Clinical Training: CPD-accredited training programmes delivered by experienced educators—tracheostomy, ventilation, enteral feeding, and more.',
+                                    'Brain & Spinal Care: Acquired and Traumatic Brain Injury, Spinal Cord Injury',
+                                    'Clinical Interventions: Tracheostomy Care & Management, PEG Feeding & Enteral Nutrition, Ventilator Support & Airway Management',
+                                    'Neurological & Physical Conditions: Cerebral Palsy, Stroke Rehabilitation & Recovery, Progressive & Degenerative Conditions',
+                                    'Complex Health & Behavioural Support: Epilepsy & Seizure Management, Learning Disabilities with Associated Health Needs, Mental Health & Behavioural Support',
+                                    'Flexible Support Options: 1:1, 2:1 nurse-led packages, 24-hour & waking night support, HCA-led packages with clinical oversight',
+                                    'Enhanced Staffing: Nurse-supported & step-down services, community-based & supported living services, hospital discharge & emergency cover',
                                 ].map((item) => (
                                     <li key={item} className="flex items-start gap-3">
                                         <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-600">

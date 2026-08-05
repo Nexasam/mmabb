@@ -60,6 +60,7 @@ const defaultWhyPoints = [
 const defaultTestimonials = [
     { quote: 'MMAB stepped in at short notice to support one of our most complex packages. The nurse-led team were professional throughout and the family felt truly supported from day one.', name: 'NHS Complex Care Manager',  role: 'Integrated Care Board',   rating: 5 },
     { quote: 'The clinical knowledge of the MMAB team is outstanding. They manage tracheostomy and ventilator care at home to a standard I rarely see from independent providers. I have no hesitation referring packages to them.', name: 'Community Nursing Lead', role: 'NHS Trust', rating: 5 },
+    { quote: 'Thank you for a lovely few days training, I can honestly say it was the best training I\'ve been on for years. The depth of clinical knowledge and practical hands-on approach made all the difference.', name: 'Steph', role: 'Healthcare Professional', rating: 5 },
     { quote: 'Having MMAB support our family member at home has made an enormous difference. The carers are skilled, consistent, and genuinely caring. We finally feel like we can breathe.', name: 'Family Carer', role: 'North East England', rating: 5 },
 ];
 
