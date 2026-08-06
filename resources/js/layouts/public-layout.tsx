@@ -500,7 +500,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             <main className="flex-1">{children}</main>
 
             {/* ── Footer ── */}
-            <footer className="bg-gradient-to-br from-brand-700 via-brand-600 to-brand-700 text-white">
+            <footer className="bg-brand-600 text-white">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="grid gap-10 md:grid-cols-4">
                         {/* Brand */}
