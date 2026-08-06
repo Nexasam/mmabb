@@ -12,18 +12,18 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    /* ── Brand colour: Professional Healthcare Blue (from logo) ── */
-    --color-brand-50:  #eff6ff;
-    --color-brand-100: #dbeafe;
-    --color-brand-200: #bfdbfe;
-    --color-brand-300: #93c5fd;
-    --color-brand-400: #60a5fa;
-    --color-brand-500: #2563eb;
-    --color-brand-600: #1d4ed8;
-    --color-brand-700: #1e40af;
-    --color-brand-800: #1e3a8a;
-    --color-brand-900: #172554;
-    --color-brand-950: #0f172a;
+    /* ── Brand colour: MMAB Navy Blue #0d2a5e ── */
+    --color-brand-50:  #e8edf5;
+    --color-brand-100: #c5d0e6;
+    --color-brand-200: #9eb0d4;
+    --color-brand-300: #718fc2;
+    --color-brand-400: #4d72b3;
+    --color-brand-500: #0d2a5e;
+    --color-brand-600: #0b2454;
+    --color-brand-700: #091d43;
+    --color-brand-800: #071733;
+    --color-brand-900: #051022;
+    --color-brand-950: #020810;
 
     /* ── Typography ── */
     --font-heading: 'Poppins', ui-sans-serif, system-ui, sans-serif;
@@ -89,25 +89,25 @@
     --popover: #ffffff;
     --popover-foreground: #1e293b;
 
-    /* ── Primary = Professional Healthcare Blue ── */
-    --primary: #2563eb;
+    /* ── Primary = MMAB Navy Blue ── */
+    --primary: #0d2a5e;
     --primary-foreground: #ffffff;
 
-    --secondary: #eff6ff;
-    --secondary-foreground: #1e40af;
+    --secondary: #e8edf5;
+    --secondary-foreground: #091d43;
 
     --muted: #f8fafc;
     --muted-foreground: #475569;    /* slate-600 — clearly readable */
 
-    --accent: #eff6ff;
-    --accent-foreground: #1e40af;
+    --accent: #e8edf5;
+    --accent-foreground: #091d43;
 
     --destructive: oklch(0.577 0.245 27.325);
     --destructive-foreground: #ffffff;
 
     --border: #e2e8f0;
     --input: #e2e8f0;
-    --ring: #3b82f6;
+    --ring: #0d2a5e;
 
     --chart-1: #3b82f6;
     --chart-2: oklch(0.6 0.118 184.704);
@@ -117,15 +117,15 @@
 
     --radius: 0.625rem;
 
-    /* ── Sidebar — soft blue-tinted white ── */
+    /* ── Sidebar — soft navy-tinted white ── */
     --sidebar: #f8fafc;
-    --sidebar-foreground: #1e3a8a;          /* dark brand blue — very readable */
-    --sidebar-primary: #3b82f6;
+    --sidebar-foreground: #0d2a5e;
+    --sidebar-primary: #0d2a5e;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #eff6ff;
-    --sidebar-accent-foreground: #1e40af;   /* readable on hover */
+    --sidebar-accent: #e8edf5;
+    --sidebar-accent-foreground: #091d43;
     --sidebar-border: #e2e8f0;
-    --sidebar-ring: #3b82f6;
+    --sidebar-ring: #0d2a5e;
 }
 
 .dark {
